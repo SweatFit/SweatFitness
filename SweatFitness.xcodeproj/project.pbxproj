@@ -14,6 +14,11 @@
 		D783A3081AC05CC300990C43 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D783A3071AC05CC300990C43 /* Images.xcassets */; };
 		D783A30B1AC05CC300990C43 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D783A3091AC05CC300990C43 /* LaunchScreen.xib */; };
 		D783A3171AC05CC400990C43 /* SweatFitnessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D783A3161AC05CC400990C43 /* SweatFitnessTests.swift */; };
+		D783A3251AC0610700990C43 /* MainWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D783A3201AC0610700990C43 /* MainWorkoutViewController.swift */; };
+		D783A3261AC0610700990C43 /* MakeWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D783A3211AC0610700990C43 /* MakeWorkoutViewController.swift */; };
+		D783A3271AC0610700990C43 /* SuggestInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D783A3221AC0610700990C43 /* SuggestInviteViewController.swift */; };
+		D783A3281AC0610700990C43 /* WorkoutDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D783A3231AC0610700990C43 /* WorkoutDatasource.swift */; };
+		D783A3291AC0610700990C43 /* WorkoutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D783A3241AC0610700990C43 /* WorkoutViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +43,11 @@
 		D783A3101AC05CC400990C43 /* SweatFitnessTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SweatFitnessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D783A3151AC05CC400990C43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D783A3161AC05CC400990C43 /* SweatFitnessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweatFitnessTests.swift; sourceTree = "<group>"; };
+		D783A3201AC0610700990C43 /* MainWorkoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWorkoutViewController.swift; sourceTree = "<group>"; };
+		D783A3211AC0610700990C43 /* MakeWorkoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeWorkoutViewController.swift; sourceTree = "<group>"; };
+		D783A3221AC0610700990C43 /* SuggestInviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestInviteViewController.swift; sourceTree = "<group>"; };
+		D783A3231AC0610700990C43 /* WorkoutDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutDatasource.swift; sourceTree = "<group>"; };
+		D783A3241AC0610700990C43 /* WorkoutViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +89,11 @@
 		D783A2FB1AC05CC300990C43 /* SweatFitness */ = {
 			isa = PBXGroup;
 			children = (
+				D783A3201AC0610700990C43 /* MainWorkoutViewController.swift */,
+				D783A3211AC0610700990C43 /* MakeWorkoutViewController.swift */,
+				D783A3221AC0610700990C43 /* SuggestInviteViewController.swift */,
+				D783A3231AC0610700990C43 /* WorkoutDatasource.swift */,
+				D783A3241AC0610700990C43 /* WorkoutViewCell.swift */,
 				D783A2FE1AC05CC300990C43 /* AppDelegate.swift */,
 				D783A3001AC05CC300990C43 /* FirstViewController.swift */,
 				D783A3021AC05CC300990C43 /* SecondViewController.swift */,
@@ -215,8 +230,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D783A3281AC0610700990C43 /* WorkoutDatasource.swift in Sources */,
 				D783A3031AC05CC300990C43 /* SecondViewController.swift in Sources */,
+				D783A3251AC0610700990C43 /* MainWorkoutViewController.swift in Sources */,
+				D783A3271AC0610700990C43 /* SuggestInviteViewController.swift in Sources */,
+				D783A3261AC0610700990C43 /* MakeWorkoutViewController.swift in Sources */,
 				D783A2FF1AC05CC300990C43 /* AppDelegate.swift in Sources */,
+				D783A3291AC0610700990C43 /* WorkoutViewCell.swift in Sources */,
 				D783A3011AC05CC300990C43 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
