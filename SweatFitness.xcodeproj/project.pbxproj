@@ -58,6 +58,7 @@
 		D708D9561AC0679000480DD2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D708D9581AC0679800480DD2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D708D95A1AC067A000480DD2 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		D708D95C1AC0685400480DD2 /* SweatFitness-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SweatFitness-Bridging-Header.h"; sourceTree = "<group>"; };
 		D783A2F91AC05CC300990C43 /* SweatFitness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SweatFitness.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D783A2FD1AC05CC300990C43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D783A2FE1AC05CC300990C43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +140,7 @@
 		D783A2FB1AC05CC300990C43 /* SweatFitness */ = {
 			isa = PBXGroup;
 			children = (
+				D708D95C1AC0685400480DD2 /* SweatFitness-Bridging-Header.h */,
 				D708D9421AC0673700480DD2 /* Bolts.framework */,
 				D708D9431AC0673700480DD2 /* Parse.framework */,
 				D783A3201AC0610700990C43 /* MainWorkoutViewController.swift */,
