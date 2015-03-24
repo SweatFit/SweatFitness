@@ -21,6 +21,7 @@
 		D708D9591AC0679800480DD2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D708D9581AC0679800480DD2 /* libz.dylib */; };
 		D708D95B1AC067A000480DD2 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D708D95A1AC067A000480DD2 /* libsqlite3.dylib */; };
 		D708D95E1AC0ADBA00480DD2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D708D95D1AC0ADBA00480DD2 /* LoginViewController.swift */; };
+		D70E29DE1AC1D535009DD9A0 /* MakeWorkoutInputFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70E29DD1AC1D535009DD9A0 /* MakeWorkoutInputFieldCell.swift */; };
 		D783A2FF1AC05CC300990C43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D783A2FE1AC05CC300990C43 /* AppDelegate.swift */; };
 		D783A3011AC05CC300990C43 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D783A3001AC05CC300990C43 /* FirstViewController.swift */; };
 		D783A3031AC05CC300990C43 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D783A3021AC05CC300990C43 /* SecondViewController.swift */; };
@@ -61,6 +62,7 @@
 		D708D95A1AC067A000480DD2 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D708D95C1AC0685400480DD2 /* SweatFitness-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SweatFitness-Bridging-Header.h"; sourceTree = "<group>"; };
 		D708D95D1AC0ADBA00480DD2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D70E29DD1AC1D535009DD9A0 /* MakeWorkoutInputFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeWorkoutInputFieldCell.swift; sourceTree = "<group>"; };
 		D783A2F91AC05CC300990C43 /* SweatFitness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SweatFitness.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D783A2FD1AC05CC300990C43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D783A2FE1AC05CC300990C43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				D708D9431AC0673700480DD2 /* Parse.framework */,
 				D783A3201AC0610700990C43 /* MainWorkoutViewController.swift */,
 				D783A3211AC0610700990C43 /* MakeWorkoutViewController.swift */,
+				D70E29DD1AC1D535009DD9A0 /* MakeWorkoutInputFieldCell.swift */,
 				D783A3221AC0610700990C43 /* SuggestInviteViewController.swift */,
 				D783A3231AC0610700990C43 /* WorkoutDatasource.swift */,
 				D783A3241AC0610700990C43 /* WorkoutViewCell.swift */,
@@ -296,6 +299,7 @@
 				D783A2FF1AC05CC300990C43 /* AppDelegate.swift in Sources */,
 				D783A3291AC0610700990C43 /* WorkoutViewCell.swift in Sources */,
 				D783A3011AC05CC300990C43 /* FirstViewController.swift in Sources */,
+				D70E29DE1AC1D535009DD9A0 /* MakeWorkoutInputFieldCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
