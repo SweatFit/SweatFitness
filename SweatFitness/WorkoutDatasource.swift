@@ -14,7 +14,7 @@ class WorkoutCollection {
     var gyms:[String]?
     init () {
         gyms = ["SPAC", "Blomquist", "Patten"]
-        sectionHidden = [true, true, true]
+        sectionHidden = [false, false, false]
         workoutDict = ["SPAC":[Workout](), "Blomquist":[Workout](), "Patten":[Workout]()]
     }
 }

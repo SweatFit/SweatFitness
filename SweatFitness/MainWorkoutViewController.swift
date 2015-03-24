@@ -27,6 +27,7 @@ class MainWorkoutViewController: UITableViewController {
                     if let objects = objects as? [PFObject] {
                         for obj in objects {
                             let creator: AnyObject! = obj["creator"]
+                            println(creator as PFUser)
                             let startTime = obj["startTime"] as NSDate
                             let endTime = obj["endTime"] as NSDate
                             let location = obj["location"] as String
