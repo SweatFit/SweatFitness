@@ -66,7 +66,6 @@ class MainWorkoutViewController: UITableViewController {
     }
     
     @IBAction func makeWorkout(sender: AnyObject) {
-        
     }
     
     @IBAction func plusPressed(sender: AnyObject, forEvent event: UIEvent) {

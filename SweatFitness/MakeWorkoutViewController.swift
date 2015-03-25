@@ -9,21 +9,13 @@
 import UIKit
 
 class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
-    var now:NSDate?
-    var calendar: NSCalendar?
-    var selectedDateComps:NSDateComponents?
-    var startDateTime:NSDate?
-    var endDateTime:NSDate?
+    var formModel:MakeWorkoutFormModel?
     var currentTF:UITextField?
     @IBOutlet weak var inputForm: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        now = NSDate()
-        calendar = NSCalendar.currentCalendar()
-        startDateTime = now
-        endDateTime = calendar!.dateByAddingUnit(NSCalendarUnit.HourCalendarUnit, value: 1, toDate: startDateTime!, options: nil)
-        selectedDateComps = calendar!.components(NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.DayCalendarUnit, fromDate: now!)
+        formModel = MakeWorkoutFormModel()
         //println(NSDateFormatter.localizedStringFromDate(startDateTime!, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle))
         //println(NSDateFormatter.localizedStringFromDate(endDateTime!, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle))
 
@@ -31,6 +23,20 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBAction func next() {
+        //validate user-input data
+        if formModel!.validateFormModel() {
+            //if it's valid
+            //make async request (or sync?)
+            //perform segue
+        } else {
+            //alert user here? maybe alert should be dynamically shown to the user as they input
+            //so call validateFormModel() every time user inputs a piece of data?
+        }
+        
+    }
+    
     @IBAction func cancel(sender: AnyObject) {
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
         
@@ -92,14 +98,14 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
                 let pickerView = UIDatePicker()
                 let toolbar = UIToolbar(frame: CGRectMake(0, -40, 320, 40))
                 pickerView.datePickerMode = UIDatePickerMode.Date
-                pickerView.minimumDate = now
+                pickerView.minimumDate = formModel!.now!
                 let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "donePickingDate")
                 let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelPicking")
                 let flex = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
                 toolbar.setItems([cancelButton, flex, doneButton], animated: true)
                 cell.inputTF.inputView = pickerView
                 cell.inputTF.inputAccessoryView = toolbar
-                cell.inputTF.text = NSDateFormatter.localizedStringFromDate(now!, dateStyle: NSDateFormatterStyle.LongStyle, timeStyle: NSDateFormatterStyle.NoStyle)
+                cell.inputTF.text = NSDateFormatter.localizedStringFromDate(formModel!.now!, dateStyle: NSDateFormatterStyle.LongStyle, timeStyle: NSDateFormatterStyle.NoStyle)
             case 1:
                 cell.fieldname.text = "START TIME"
                 let pickerView = UIDatePicker()
@@ -113,7 +119,7 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
                 toolbar.setItems([cancelButton, flex, doneButton], animated: true)
                 cell.inputTF.inputView = pickerView
                 cell.inputTF.inputAccessoryView = toolbar
-                cell.inputTF.text = NSDateFormatter.localizedStringFromDate(startDateTime!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+                cell.inputTF.text = NSDateFormatter.localizedStringFromDate(formModel!.startDateTime!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
             case 2:
                 cell.fieldname.text = "END TIME"
                 let pickerView = UIDatePicker()
@@ -121,14 +127,14 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
                 pickerView.datePickerMode = UIDatePickerMode.Time
                 //pickerView.minuteInterval = 15
                 //pickerView.minimumDate = now
-                pickerView.date = endDateTime!
+                pickerView.date = formModel!.endDateTime!
                 let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "donePickingTime")
                 let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelPicking")
                 let flex = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
                 toolbar.setItems([cancelButton, flex, doneButton], animated: true)
                 cell.inputTF.inputView = pickerView
                 cell.inputTF.inputAccessoryView = toolbar
-                cell.inputTF.text = NSDateFormatter.localizedStringFromDate(endDateTime!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+                cell.inputTF.text = NSDateFormatter.localizedStringFromDate(formModel!.endDateTime!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
             default:
                 cell.fieldname.text = "new field"
             }
@@ -150,22 +156,8 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
     func donePickingDate() {
         println("donePickingDate")
         let datePicker = self.currentTF!.inputView as UIDatePicker
+        formModel!.donePickingDateFromPicker(datePicker)
         self.currentTF!.text = NSDateFormatter.localizedStringFromDate(datePicker.date, dateStyle: NSDateFormatterStyle.LongStyle, timeStyle: NSDateFormatterStyle.NoStyle)
-        let dateCompFlags = NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.DayCalendarUnit
-        self.selectedDateComps = calendar!.components(dateCompFlags, fromDate: datePicker.date)
-        let dateTimeCompFlags = dateCompFlags | NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit
-        let startDateTimeComps = calendar!.components(dateTimeCompFlags, fromDate: startDateTime!)
-        let endDateTimeComps = calendar!.components(dateTimeCompFlags, fromDate: endDateTime!)
-        startDateTimeComps.year = self.selectedDateComps!.year
-        startDateTimeComps.month = self.selectedDateComps!.month
-        startDateTimeComps.day = self.selectedDateComps!.day
-        endDateTimeComps.year = self.selectedDateComps!.year
-        endDateTimeComps.month = self.selectedDateComps!.month
-        endDateTimeComps.day = self.selectedDateComps!.day
-        startDateTime = calendar!.dateFromComponents(startDateTimeComps)
-        endDateTime = calendar!.dateFromComponents(endDateTimeComps)
-        //println(NSDateFormatter.localizedStringFromDate(startDateTime!, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle))
-        //println(NSDateFormatter.localizedStringFromDate(endDateTime!, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle))
         self.currentTF!.resignFirstResponder()
     }
     func cancelPicking() {
@@ -175,23 +167,9 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
     func donePickingTime() {
         let indexPath = inputForm.indexPathForCell(self.currentTF!.superview!.superview as MakeWorkoutInputFieldCell)
         let datePicker = self.currentTF!.inputView as UIDatePicker
+        formModel!.donePickingTimeFromPicker(datePicker, withIndexPath: indexPath)
         self.currentTF!.text = NSDateFormatter.localizedStringFromDate(datePicker.date, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        let dateTimeCompFlags = NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit
-        var timeComps = calendar!.components(dateTimeCompFlags, fromDate: datePicker.date)
-        timeComps.year = self.selectedDateComps!.year
-        timeComps.month = self.selectedDateComps!.month
-        timeComps.day = self.selectedDateComps!.day
-        switch indexPath!.row {
-        case 1:
-            startDateTime = calendar!.dateFromComponents(timeComps)
-            //println(NSDateFormatter.localizedStringFromDate(startDateTime!, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle))
-        case 2:
-            endDateTime = calendar!.dateFromComponents(timeComps)
-            //println(NSDateFormatter.localizedStringFromDate(endDateTime!, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle))
-        default:
-            println("other than start/end time?")
-        }
-        self.currentTF!.resignFirstResponder()
+                self.currentTF!.resignFirstResponder()
     }
     func cancelPickingDate() {
         self.currentTF!.resignFirstResponder()

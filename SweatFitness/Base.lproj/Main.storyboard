@@ -109,7 +109,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="GAj-tx-Gsc" kind="push" id="khD-eY-tcD"/>
+                                    <action selector="next" destination="erc-s6-iCR" eventType="touchUpInside" id="8rN-uY-Slz"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="60" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="9jB-fg-K5j">
@@ -177,6 +177,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="inputForm" destination="9jB-fg-K5j" id="Qjb-X1-M53"/>
+                        <segue destination="GAj-tx-Gsc" kind="push" identifier="suggestInviteSegue" id="eI9-E2-ARo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oTa-JQ-A5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
