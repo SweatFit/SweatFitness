@@ -5,11 +5,15 @@
 //  Created by Taiwon Chung on 3/23/15.
 //  Copyright (c) 2015 Sweat. All rights reserved.
 //
+/*
+func logInViewController(logInController: PFLogInViewController!,
+    didLogInUser user: PFUser!)
+{
+    var nextViewController = RegisterViewController()
+    self.presentViewController(nextViewController, animated: true, completion: nil)
+}
 
-import Parse
-import UIKit
-
-class LoginViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+class LoginViewController: PFLogInViewController, PFLogInViewControllerDelegate, FBLoginViewDelegate, PFSignUpViewControllerDelegate {
     var usernameTF: UITextField?
     var passwordTF: UITextField?
     override func viewDidLoad() {
@@ -56,3 +60,6 @@ class LoginViewController: UIViewController, UITableViewDataSource, UITableViewD
         textField.resignFirstResponder()
     }
 }
+*/
+
+

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BEB08A71AC2A8AF002097D4 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BEB08A61AC2A8AE002097D4 /* ParseUI.framework */; };
 		D708D9441AC0673700480DD2 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D708D9421AC0673700480DD2 /* Bolts.framework */; };
 		D708D9451AC0673700480DD2 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D708D9431AC0673700480DD2 /* Parse.framework */; };
 		D708D9471AC0675600480DD2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D708D9461AC0675600480DD2 /* AudioToolbox.framework */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3BEB08A61AC2A8AE002097D4 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		D708D9421AC0673700480DD2 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		D708D9431AC0673700480DD2 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		D708D9461AC0675600480DD2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -86,6 +88,7 @@
 			files = (
 				D708D95B1AC067A000480DD2 /* libsqlite3.dylib in Frameworks */,
 				D708D9591AC0679800480DD2 /* libz.dylib in Frameworks */,
+				3BEB08A71AC2A8AF002097D4 /* ParseUI.framework in Frameworks */,
 				D708D9571AC0679000480DD2 /* SystemConfiguration.framework in Frameworks */,
 				D708D9551AC0678800480DD2 /* StoreKit.framework in Frameworks */,
 				D708D9531AC0678100480DD2 /* Security.framework in Frameworks */,
@@ -143,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				D708D95C1AC0685400480DD2 /* SweatFitness-Bridging-Header.h */,
+				3BEB08A61AC2A8AE002097D4 /* ParseUI.framework */,
 				D708D9421AC0673700480DD2 /* Bolts.framework */,
 				D708D9431AC0673700480DD2 /* Parse.framework */,
 				D783A3201AC0610700990C43 /* MainWorkoutViewController.swift */,
