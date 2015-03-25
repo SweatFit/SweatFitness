@@ -17,12 +17,16 @@ class MakeWorkoutFormModel {
     var endDateTime:NSDate?
     var selectedGym:String?
     var Tags:[String]?
+    var fieldNames:[[String]]?
+    var fieldSections: [String]?
     init () {
         self.now = NSDate()
         startDateTime = now
         self.calendar = NSCalendar.currentCalendar()
         self.endDateTime = calendar!.dateByAddingUnit(NSCalendarUnit.HourCalendarUnit, value: 1, toDate: startDateTime!, options: nil)
         self.selectedDateComps = calendar!.components(NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.DayCalendarUnit, fromDate: now!)
+        self.fieldNames = [["DATE","START TIME","END TIME"], ["GYM"], ["TAGS"]]
+        self.fieldSections = ["When?", "Where?", "Which Workout?"]
     }
     func donePickingDateFromPicker(picker: UIDatePicker!) {
         let dateCompFlags = NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.DayCalendarUnit

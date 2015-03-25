@@ -230,12 +230,9 @@
                                     <segment title="Second"/>
                                 </segments>
                             </segmentedControl>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="1Fq-Wb-ws3">
-                                <rect key="frame" x="-122" y="189" width="320" height="162"/>
-                                <date key="date" timeIntervalSinceReferenceDate="448924209.91973501">
-                                    <!--2015-03-24 21:10:09 +0000-->
-                                </date>
-                            </datePicker>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iUV-qJ-EIQ">
+                                <rect key="frame" x="-16" y="279" width="320" height="162"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

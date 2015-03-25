@@ -8,8 +8,9 @@
 
 import UIKit
 
-class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     var formModel:MakeWorkoutFormModel?
+    var gyms = ["SPAC","Blomquist","Patten"]
     var currentTF:UITextField?
     @IBOutlet weak var inputForm: UITableView!
     
@@ -55,31 +56,13 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let textLabel = UILabel()
         textLabel.font = UIFont(name: "System", size: 25)
-        switch section {
-        case 0:
-            textLabel.text = "When?"
-        case 1:
-            textLabel.text = "Where?"
-        case 2:
-            textLabel.text =  "Which Workout?"
-        default:
-            textLabel.text =  "New Input"
-        }
+        textLabel.text = self.formModel!.fieldSections![section]
         return textLabel
     }
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 3
-        case 1:
-            return 1
-        case 2:
-            return 1
-        default:
-            return 0;
-        }
+        return self.formModel!.fieldNames![section].count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -90,69 +73,81 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
         let cell = tableView.dequeueReusableCellWithIdentifier("inputFieldCell") as MakeWorkoutInputFieldCell
         let section = indexPath.section
         let row = indexPath.row
+        cell.fieldname.text = self.formModel!.fieldNames![section][row]
+        var pickerView:UIView?
+        var toolbar:UIToolbar?
         switch section {
         case 0:
+            pickerView = UIDatePicker()
+            toolbar = UIToolbar(frame: CGRectMake(0, -40, tableView.superview!.bounds.width, 40))
+            let flex = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+            let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelPicking")
+            toolbar!.setItems([cancelButton, flex], animated: true)
+            var doneButton:UIBarButtonItem?
             switch row {
             case 0:
-                cell.fieldname.text = "DATE"
-                let pickerView = UIDatePicker()
-                let toolbar = UIToolbar(frame: CGRectMake(0, -40, 320, 40))
-                pickerView.datePickerMode = UIDatePickerMode.Date
-                pickerView.minimumDate = formModel!.now!
-                let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "donePickingDate")
-                let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelPicking")
-                let flex = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-                toolbar.setItems([cancelButton, flex, doneButton], animated: true)
-                cell.inputTF.inputView = pickerView
-                cell.inputTF.inputAccessoryView = toolbar
+                (pickerView as UIDatePicker).datePickerMode = UIDatePickerMode.Date
+                (pickerView as UIDatePicker).minimumDate = formModel!.now!
+                doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "donePickingDate")
                 cell.inputTF.text = NSDateFormatter.localizedStringFromDate(formModel!.now!, dateStyle: NSDateFormatterStyle.LongStyle, timeStyle: NSDateFormatterStyle.NoStyle)
             case 1:
-                cell.fieldname.text = "START TIME"
-                let pickerView = UIDatePicker()
-                let toolbar = UIToolbar(frame: CGRectMake(0, -40, 320, 40))
-                pickerView.datePickerMode = UIDatePickerMode.Time
+                (pickerView as UIDatePicker).datePickerMode = UIDatePickerMode.Time
                 //pickerView.minuteInterval = 15
-                //pickerView.minimumDate = now
-                let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "donePickingTime")
-                let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelPicking")
-                let flex = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-                toolbar.setItems([cancelButton, flex, doneButton], animated: true)
-                cell.inputTF.inputView = pickerView
-                cell.inputTF.inputAccessoryView = toolbar
+                doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "donePickingTime")
                 cell.inputTF.text = NSDateFormatter.localizedStringFromDate(formModel!.startDateTime!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
             case 2:
-                cell.fieldname.text = "END TIME"
-                let pickerView = UIDatePicker()
-                let toolbar = UIToolbar(frame: CGRectMake(0, -40, 320, 40))
-                pickerView.datePickerMode = UIDatePickerMode.Time
+                (pickerView as UIDatePicker).datePickerMode = UIDatePickerMode.Time
                 //pickerView.minuteInterval = 15
-                //pickerView.minimumDate = now
-                pickerView.date = formModel!.endDateTime!
-                let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "donePickingTime")
-                let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelPicking")
-                let flex = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-                toolbar.setItems([cancelButton, flex, doneButton], animated: true)
-                cell.inputTF.inputView = pickerView
-                cell.inputTF.inputAccessoryView = toolbar
+                (pickerView as UIDatePicker).date = formModel!.endDateTime!
+                doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "donePickingTime")
                 cell.inputTF.text = NSDateFormatter.localizedStringFromDate(formModel!.endDateTime!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
             default:
-                cell.fieldname.text = "new field"
+                println("implement new field case")
             }
+            toolbar!.items!.append(doneButton!)
+            cell.inputTF.inputView = pickerView
+            cell.inputTF.inputAccessoryView = toolbar
         case 1:
-            cell.fieldname.text = "GYM"
-            cell.inputTF.text = "Select Gym..."
+            pickerView = UIPickerView()
+            (pickerView as UIPickerView).delegate = self
+            (pickerView as UIPickerView).dataSource = self
+            toolbar = UIToolbar(frame: CGRectMake(0, -40, tableView.superview!.bounds.width, 40))
+            let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "donePickingGym")
+            let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelPicking")
+            let flex = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+            toolbar!.setItems([cancelButton, flex, doneButton], animated: true)
+            cell.inputTF.inputView = pickerView
+            cell.inputTF.inputAccessoryView = toolbar
+            cell.inputTF.placeholder = "Select Gym..."
         case 2:
-            cell.fieldname.text = "TAG"
+            cell.inputTF.placeholder = "#legs"
         default:
-            cell.fieldname.text = "new field"
+            println("implement new section case")
         }
+        
         return cell
+    }
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    // UIPickerViewDelegate, UIPickerViewDatasource methods
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return gyms.count
+    }
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        return gyms[row]
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
         self.currentTF = textField
     }
     
+    ////////////////////////////////////////////////////////////////////////
+    // actions for toolbar items
+    ////////////////////////////////////////////////////////////////////////
     func donePickingDate() {
         println("donePickingDate")
         let datePicker = self.currentTF!.inputView as UIDatePicker
@@ -171,8 +166,11 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
         self.currentTF!.text = NSDateFormatter.localizedStringFromDate(datePicker.date, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
                 self.currentTF!.resignFirstResponder()
     }
-    func cancelPickingDate() {
-        self.currentTF!.resignFirstResponder()
+    
+    func donePickingGym() {
+        formModel!.selectedGym = gyms[(currentTF!.inputView as UIPickerView).selectedRowInComponent(0)]
+        currentTF!.text = formModel!.selectedGym
+        currentTF!.resignFirstResponder()
     }
 
     
