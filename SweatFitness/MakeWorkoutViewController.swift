@@ -28,13 +28,16 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
     }
     
     @IBAction func next() {
+        //TODO: implement this
         //validate user-input data
         if formModel!.validateFormModel() {
             //if it's valid
             //make async request (or sync?)
             //perform segue
         } else {
-            //alert user here? maybe alert should be dynamically shown to the user as they input
+            //alert user here. 
+            //on screen alert (red marks) on input fields
+            //should be dynamically shown to the user as they input
             //so call validateFormModel() every time user inputs a piece of data?
         }
         
@@ -59,6 +62,7 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
         let textLabel = UILabel()
         textLabel.font = UIFont(name: "System", size: 25)
         textLabel.text = self.formModel!.fieldSections![section]
+        textLabel.textColor = UIColor(red: 229/255, green: 86/255, blue: 58/255, alpha: 1.0)
         return textLabel
     }
     
@@ -76,6 +80,7 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
         let section = indexPath.section
         let row = indexPath.row
         cell.fieldname.text = self.formModel!.fieldNames![section][row]
+        cell.fieldname.textColor = UIColor(red: 69/255, green: 185/255, blue: 193/255, alpha: 1.0)
         var pickerView:UIView?
         var toolbar:UIToolbar?
         switch section {

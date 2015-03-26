@@ -94,7 +94,7 @@ class MainWorkoutViewController: UITableViewController {
         let img = UIImage(named: "hexagon")
         let button = UIButton()
         button.setTitle(self.workouts.gyms![section], forState: UIControlState.Normal)
-        button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        button.setTitleColor(UIColor(red: 229/255, green: 86/255, blue: 58/255, alpha: 1.0), forState: UIControlState.Normal)
         button.setBackgroundImage(img, forState: UIControlState.Normal)
         //button.setImage(img, forState: UIControlState.Normal)
         button.tag = section
