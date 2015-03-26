@@ -19,6 +19,8 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
         formModel = MakeWorkoutFormModel()
         //println(NSDateFormatter.localizedStringFromDate(startDateTime!, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle))
         //println(NSDateFormatter.localizedStringFromDate(endDateTime!, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle))
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillBeHidden:", name: UIKeyboardWillHideNotification, object: nil)
 
     }
     override func didReceiveMemoryWarning() {
@@ -120,7 +122,7 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
             cell.inputTF.inputAccessoryView = toolbar
             cell.inputTF.placeholder = "Select Gym..."
         case 2:
-            cell.inputTF.placeholder = "#legs"
+            cell.inputTF.placeholder = "example: #chest"
         default:
             println("implement new section case")
         }
@@ -141,8 +143,16 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
         return gyms[row]
     }
     
+    /////////////////////////////////////////////////////////////////////////
+    // UITextFieldDelegate methods
+    /////////////////////////////////////////////////////////////////////////
+    
     func textFieldDidBeginEditing(textField: UITextField) {
         self.currentTF = textField
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        self.currentTF = nil
     }
     
     ////////////////////////////////////////////////////////////////////////
@@ -172,6 +182,26 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
         currentTF!.text = formModel!.selectedGym
         currentTF!.resignFirstResponder()
     }
-
     
+    func keyboardWasShown(aNotification:NSNotification!) {
+        println("keyboardWasShown")
+        let info = aNotification.userInfo
+        let kbSize = info![UIKeyboardFrameBeginUserInfoKey]!.CGRectValue().size
+        let contentInsets = UIEdgeInsetsMake(0, 0, kbSize.height, 0)
+        inputForm.contentInset = contentInsets
+        inputForm.scrollIndicatorInsets = contentInsets
+        
+        let aRect = CGRectMake(inputForm.frame.minX, inputForm.frame.minY, inputForm.frame.width, inputForm.frame.height-kbSize.height)
+        if !CGRectContainsPoint(aRect, currentTF!.frame.origin) {
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.inputForm.scrollRectToVisible(self.currentTF!.frame, animated: true)
+            })
+        }
+    }
+    func keyboardWillBeHidden(aNotification:NSNotification!) {
+        println("keyboardWillBeHidden")
+        let contentInsets = UIEdgeInsetsZero
+        inputForm.contentInset = contentInsets
+        inputForm.scrollIndicatorInsets = contentInsets
+    }
 }
