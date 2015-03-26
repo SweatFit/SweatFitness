@@ -5,19 +5,50 @@
 //  Created by Taiwon Chung on 3/23/15.
 //  Copyright (c) 2015 Sweat. All rights reserved.
 //
-/*
-func logInViewController(logInController: PFLogInViewController!,
-    didLogInUser user: PFUser!)
-{
-    var nextViewController = RegisterViewController()
-    self.presentViewController(nextViewController, animated: true, completion: nil)
-}
 
-class LoginViewController: PFLogInViewController, PFLogInViewControllerDelegate, FBLoginViewDelegate, PFSignUpViewControllerDelegate {
-    var usernameTF: UITextField?
-    var passwordTF: UITextField?
+import ParseUI
+import Parse
+
+class LoginViewController: PFLogInViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.darkGrayColor() // TODO: Change Color later
+        
+        let logoView = UIImageView(image: UIImage(named: "logo")) // TODO: Fix dimensions
+        self.logInView.logo = logoView
+    
+    }
+    
+    func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) -> Void {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    /*
+    var usernameTF: UITextField?
+    var passwordTF: UITextField?
+    
+    override func viewDidDisappear(animated: Bool) {
+        var logInController:LoginViewController  = LoginViewController()
+        logInController.fields = (PFLogInFields.UsernameAndPassword
+            | PFLogInFields.Facebook
+            | PFLogInFields.Twitter
+            | PFLogInFields.LogInButton
+            | PFLogInFields.SignUpButton
+            | PFLogInFields.PasswordForgotten
+            | PFLogInFields.DismissButton
+        )
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        var logInController:LoginViewController  = LoginViewController()
+        logInController.fields = (PFLogInFields.UsernameAndPassword
+            | PFLogInFields.Facebook
+            | PFLogInFields.Twitter
+            | PFLogInFields.LogInButton
+            | PFLogInFields.SignUpButton
+            | PFLogInFields.PasswordForgotten
+            | PFLogInFields.DismissButton
+        )
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,10 +87,12 @@ class LoginViewController: PFLogInViewController, PFLogInViewControllerDelegate,
             return pwdcell
         }
     }
+    
     func textFieldDidEndEditing(textField: UITextField) {
         textField.resignFirstResponder()
     }
+    */
 }
-*/
+
 
 
