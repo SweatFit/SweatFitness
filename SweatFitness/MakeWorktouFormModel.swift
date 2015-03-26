@@ -83,11 +83,18 @@ class MakeWorkoutFormModel {
             return InvalidInputException(isInvalid: true, errorMessage: "Start Time for your workout is earlier than now.")
         } else if self.selectedGym == nil {
             return InvalidInputException(isInvalid: true, errorMessage: "Gym is not selected.")
-        }
-        /* later when tagging is implemented
-        else if self.Tags == nil {
+        } else if self.Tags == nil {
             return InvalidInputException(isInvalid: true, errorMessage: "There is no tag for the workout.")
-        }*/
+        } else if self.Tags!.count == 0 {
+            return InvalidInputException(isInvalid: true, errorMessage: "There is no tag for the workout.")
+        }
         return InvalidInputException()
     }
+    
+    func extractTagsFromString(string:String!) {
+        let arr = split(string, {$0 == " "}, allowEmptySlices: false)
+        self.Tags = arr
+        println(self.Tags)
+    }
 }
+

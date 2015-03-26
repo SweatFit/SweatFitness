@@ -13,6 +13,7 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
     var formModel:MakeWorkoutFormModel?
     var gyms = ["SPAC","Blomquist","Patten"]
     var currentTF:UITextField?
+    var tap:UITapGestureRecognizer?
     @IBOutlet weak var inputForm: UITableView!
     @IBOutlet weak var actIndicator: UIActivityIndicatorView!
     override func viewDidLoad() {
@@ -22,6 +23,7 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
         //println(NSDateFormatter.localizedStringFromDate(endDateTime!, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle))
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillBeHidden:", name: UIKeyboardWillHideNotification, object: nil)
+        tap = UITapGestureRecognizer(target: self, action: "cancelPicking")
 
     }
     override func didReceiveMemoryWarning() {
@@ -39,9 +41,9 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
             newWorkoutObj["startTime"] = formModel!.startDateTime!
             newWorkoutObj["endTime"] = formModel!.endDateTime!
             newWorkoutObj["location"] = formModel!.selectedGym!
+            newWorkoutObj["tags"] = formModel!.Tags!
             // not yet implemented
             //newWorkoutObj["creator"] = PFUser.currentUser
-            //newWorkoutObj["tags"] = formModel!.Tags!
             // show activity indicator
             actIndicator.hidden = false
             actIndicator.startAnimating()
@@ -70,6 +72,10 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
         
     }
+    
+    //////////////////////////////////////////////////////////////////////////////////
+    // UITableViewDelegate methods
+    //////////////////////////////////////////////////////////////////////////////////
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 3
     }
@@ -99,15 +105,20 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("inputFieldCell") as MakeWorkoutInputFieldCell
+        var cell:UITableViewCell?
         let section = indexPath.section
         let row = indexPath.row
-        cell.fieldname.text = self.formModel!.fieldNames![section][row]
-        cell.fieldname.textColor = UIColor(red: 69/255, green: 185/255, blue: 193/255, alpha: 1.0)
         var pickerView:UIView?
         var toolbar:UIToolbar?
         switch section {
         case 0:
+            
+            let reuseCell = tableView.dequeueReusableCellWithIdentifier("inputPickerFieldCell") as MakeWorkoutInputPickerFieldCell
+            reuseCell.fieldname.text = self.formModel!.fieldNames![section][row]
+            reuseCell.fieldname.textColor = UIColor(red: 69/255, green: 185/255, blue: 193/255, alpha: 1.0)
+            var pickerView:UIView?
+            var toolbar:UIToolbar?
+            
             pickerView = UIDatePicker()
             toolbar = UIToolbar(frame: CGRectMake(0, -40, tableView.superview!.bounds.width, 40))
             let flex = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
@@ -119,25 +130,31 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
                 (pickerView as UIDatePicker).datePickerMode = UIDatePickerMode.Date
                 (pickerView as UIDatePicker).minimumDate = formModel!.now!
                 doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "donePickingDate")
-                cell.inputTF.text = NSDateFormatter.localizedStringFromDate(formModel!.now!, dateStyle: NSDateFormatterStyle.LongStyle, timeStyle: NSDateFormatterStyle.NoStyle)
+                reuseCell.inputTF.text = NSDateFormatter.localizedStringFromDate(formModel!.now!, dateStyle: NSDateFormatterStyle.LongStyle, timeStyle: NSDateFormatterStyle.NoStyle)
             case 1:
                 (pickerView as UIDatePicker).datePickerMode = UIDatePickerMode.Time
                 //pickerView.minuteInterval = 15
                 doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "donePickingTime")
-                cell.inputTF.text = NSDateFormatter.localizedStringFromDate(formModel!.startDateTime!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+                reuseCell.inputTF.text = NSDateFormatter.localizedStringFromDate(formModel!.startDateTime!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
             case 2:
                 (pickerView as UIDatePicker).datePickerMode = UIDatePickerMode.Time
                 //pickerView.minuteInterval = 15
                 (pickerView as UIDatePicker).date = formModel!.endDateTime!
                 doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "donePickingTime")
-                cell.inputTF.text = NSDateFormatter.localizedStringFromDate(formModel!.endDateTime!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+                reuseCell.inputTF.text = NSDateFormatter.localizedStringFromDate(formModel!.endDateTime!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
             default:
                 println("implement new field case")
             }
             toolbar!.items!.append(doneButton!)
-            cell.inputTF.inputView = pickerView
-            cell.inputTF.inputAccessoryView = toolbar
+            reuseCell.inputTF.inputView = pickerView
+            reuseCell.inputTF.inputAccessoryView = toolbar
+            cell = reuseCell
         case 1:
+            
+            let reuseCell = tableView.dequeueReusableCellWithIdentifier("inputPickerFieldCell") as MakeWorkoutInputPickerFieldCell
+            reuseCell.fieldname.text = self.formModel!.fieldNames![section][row]
+            reuseCell.fieldname.textColor = UIColor(red: 69/255, green: 185/255, blue: 193/255, alpha: 1.0)
+            
             pickerView = UIPickerView()
             (pickerView as UIPickerView).delegate = self
             (pickerView as UIPickerView).dataSource = self
@@ -146,16 +163,21 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
             let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelPicking")
             let flex = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
             toolbar!.setItems([cancelButton, flex, doneButton], animated: true)
-            cell.inputTF.inputView = pickerView
-            cell.inputTF.inputAccessoryView = toolbar
-            cell.inputTF.placeholder = "Select Gym..."
+            reuseCell.inputTF.inputView = pickerView
+            reuseCell.inputTF.inputAccessoryView = toolbar
+            reuseCell.inputTF.placeholder = "Select Gym..."
+            cell = reuseCell
         case 2:
-            cell.inputTF.placeholder = "example: #chest"
+            let reuseCell = tableView.dequeueReusableCellWithIdentifier("inputTextFieldCell") as MakeWorkoutInputTextFieldCell
+            reuseCell.fieldname.text = self.formModel!.fieldNames![section][row]
+            reuseCell.fieldname.textColor = UIColor(red: 69/255, green: 185/255, blue: 193/255, alpha: 1.0)
+            reuseCell.inputTF.placeholder = "example: #chest"
+            cell = reuseCell
         default:
             println("implement new section case")
         }
         
-        return cell
+        return cell!
     }
     
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -177,10 +199,23 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
     
     func textFieldDidBeginEditing(textField: UITextField) {
         self.currentTF = textField
+        if let mytf = textField as? MyTextField {
+            return
+        } else {
+            self.view.addGestureRecognizer(tap!)
+            self.inputForm.addGestureRecognizer(tap!)
+        }
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
         self.currentTF = nil
+        if let mytf = textField as? MyTextField {
+            return
+        } else {
+            self.view.removeGestureRecognizer(tap!)
+            self.inputForm.removeGestureRecognizer(tap!)
+            formModel!.extractTagsFromString(textField.text)
+        }
     }
     
     ////////////////////////////////////////////////////////////////////////
@@ -190,26 +225,34 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
         println("donePickingDate")
         let datePicker = self.currentTF!.inputView as UIDatePicker
         formModel!.donePickingDateFromPicker(datePicker)
-        self.currentTF!.text = NSDateFormatter.localizedStringFromDate(datePicker.date, dateStyle: NSDateFormatterStyle.LongStyle, timeStyle: NSDateFormatterStyle.NoStyle)
-        self.currentTF!.resignFirstResponder()
+        currentTF!.text = NSDateFormatter.localizedStringFromDate(datePicker.date, dateStyle: NSDateFormatterStyle.LongStyle, timeStyle: NSDateFormatterStyle.NoStyle)
+        currentTF!.endEditing(true)
+        //self.currentTF!.resignFirstResponder()
     }
     func cancelPicking() {
-        self.currentTF!.resignFirstResponder()
+        currentTF!.endEditing(true)
+        //self.currentTF!.resignFirstResponder()
     }
     
     func donePickingTime() {
-        let indexPath = inputForm.indexPathForCell(self.currentTF!.superview!.superview as MakeWorkoutInputFieldCell)
+        let indexPath = inputForm.indexPathForCell(self.currentTF!.superview!.superview as MakeWorkoutInputPickerFieldCell)
         let datePicker = self.currentTF!.inputView as UIDatePicker
         formModel!.donePickingTimeFromPicker(datePicker, withIndexPath: indexPath)
         self.currentTF!.text = NSDateFormatter.localizedStringFromDate(datePicker.date, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-                self.currentTF!.resignFirstResponder()
+        currentTF!.endEditing(true)
+        //self.currentTF!.resignFirstResponder()
     }
     
     func donePickingGym() {
         formModel!.selectedGym = gyms[(currentTF!.inputView as UIPickerView).selectedRowInComponent(0)]
         currentTF!.text = formModel!.selectedGym
-        currentTF!.resignFirstResponder()
+        currentTF!.endEditing(true)
+        //currentTF!.resignFirstResponder()
     }
+    
+    /////////////////////////////////////////////////////////////////////////////////////
+    // keyboard notifications
+    /////////////////////////////////////////////////////////////////////////////////////
     
     func keyboardWasShown(aNotification:NSNotification!) {
         println("keyboardWasShown")

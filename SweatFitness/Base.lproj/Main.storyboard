@@ -116,19 +116,19 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="446"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="inputFieldCell" id="blW-Lc-K8B" customClass="MakeWorkoutInputFieldCell" customModule="SweatFitness" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="inputPickerFieldCell" id="blW-Lc-K8B" customClass="MakeWorkoutInputPickerFieldCell" customModule="SweatFitness" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="blW-Lc-K8B" id="jxw-jb-fct">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s4r-jF-Tzz">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s4r-jF-Tzz" customClass="MyTextField" customModule="SweatFitness" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="16" width="264" height="36"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="36" id="0Ks-1y-Sfz"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="yes" keyboardType="twitter"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="erc-s6-iCR" id="j21-PF-dmE"/>
                                                     </connections>
@@ -155,6 +155,47 @@
                                         <connections>
                                             <outlet property="fieldname" destination="e38-u8-zbn" id="OIA-Ef-5hX"/>
                                             <outlet property="inputTF" destination="s4r-jF-Tzz" id="inf-1z-hB8"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="inputTextFieldCell" id="PzN-Ra-BMV" customClass="MakeWorkoutInputTextFieldCell" customModule="SweatFitness" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PzN-Ra-BMV" id="SfY-tg-jXH">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0F9-mw-ctb">
+                                                    <rect key="frame" x="16" y="16" width="264" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="36" id="G11-2G-cJN"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="yes" keyboardType="twitter"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="erc-s6-iCR" id="uZw-8T-h38"/>
+                                                    </connections>
+                                                </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fieldname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rR-s3-bv1">
+                                                    <rect key="frame" x="16" y="0.0" width="120" height="14.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="120" id="ZqC-qc-gsz"/>
+                                                        <constraint firstAttribute="height" constant="14.5" id="tx8-H5-XdB"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4rR-s3-bv1" firstAttribute="top" secondItem="SfY-tg-jXH" secondAttribute="topMargin" constant="-8" id="ZNI-Zq-bIl"/>
+                                                <constraint firstItem="4rR-s3-bv1" firstAttribute="leading" secondItem="SfY-tg-jXH" secondAttribute="leadingMargin" constant="8" id="fbM-gE-cne"/>
+                                                <constraint firstItem="0F9-mw-ctb" firstAttribute="leading" secondItem="4rR-s3-bv1" secondAttribute="leading" id="hCk-dX-1Vr"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="0F9-mw-ctb" secondAttribute="trailing" constant="32" id="lVE-sF-Xnv"/>
+                                                <constraint firstItem="0F9-mw-ctb" firstAttribute="top" secondItem="4rR-s3-bv1" secondAttribute="bottom" constant="1.5" id="oAb-eo-UxS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="fieldname" destination="4rR-s3-bv1" id="grq-hZ-INb"/>
+                                            <outlet property="inputTF" destination="0F9-mw-ctb" id="a98-wn-bQI"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
