@@ -163,13 +163,18 @@
                                     <outlet property="delegate" destination="erc-s6-iCR" id="eJS-KU-Udh"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="OIi-Rh-ktZ">
+                                <rect key="frame" x="150" y="277" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="EiH-9n-89w" secondAttribute="centerX" constant="7" id="CpG-9e-naQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9jB-fg-K5j" secondAttribute="trailing" constant="-16" id="SxJ-Ri-cIi"/>
+                            <constraint firstAttribute="centerY" secondItem="OIi-Rh-ktZ" secondAttribute="centerY" constant="-3" id="Tyv-kH-7RG"/>
                             <constraint firstItem="9jB-fg-K5j" firstAttribute="top" secondItem="Oux-wW-U6k" secondAttribute="bottom" id="U0m-9w-f19"/>
                             <constraint firstItem="9jB-fg-K5j" firstAttribute="leading" secondItem="D2u-2n-l27" secondAttribute="leadingMargin" constant="-16" id="WF7-1K-cNV"/>
+                            <constraint firstAttribute="centerX" secondItem="OIi-Rh-ktZ" secondAttribute="centerX" id="bLo-ai-llq"/>
                             <constraint firstAttribute="centerX" secondItem="9jB-fg-K5j" secondAttribute="centerX" id="gug-0d-Zz7"/>
                             <constraint firstItem="EiH-9n-89w" firstAttribute="top" secondItem="9jB-fg-K5j" secondAttribute="bottom" constant="8" id="tHr-KQ-dP8"/>
                             <constraint firstItem="Rf5-jA-c7j" firstAttribute="top" secondItem="EiH-9n-89w" secondAttribute="bottom" constant="20" id="ubO-vf-WFX"/>
@@ -183,6 +188,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="actIndicator" destination="OIi-Rh-ktZ" id="UKp-Y0-SdS"/>
                         <outlet property="inputForm" destination="9jB-fg-K5j" id="Qjb-X1-M53"/>
                         <segue destination="GAj-tx-Gsc" kind="push" identifier="suggestInviteSegue" id="eI9-E2-ARo"/>
                     </connections>

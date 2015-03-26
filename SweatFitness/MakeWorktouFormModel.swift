@@ -9,6 +9,18 @@
 import Foundation
 import UIKit
 
+class InvalidInputException {
+    var isInvalid:Bool!
+    var errorMessage:String?
+    init() {
+        isInvalid = false
+    }
+    init(isInvalid:Bool, errorMessage:String!) {
+        self.isInvalid = isInvalid
+        self.errorMessage = errorMessage
+    }
+}
+
 class MakeWorkoutFormModel {
     var now:NSDate?
     var calendar:NSCalendar?
@@ -63,8 +75,19 @@ class MakeWorkoutFormModel {
         }
     }
     
-    func validateFormModel() -> Bool{
+    func validateFormModel() -> InvalidInputException{
         // TODO: implement this for validating user input before sending request
-        return true
+        if startDateTime!.compare(endDateTime!) == NSComparisonResult.OrderedDescending {
+            return InvalidInputException(isInvalid: true, errorMessage: "Start Time cannot be later than End Time.")
+        } else if NSDate().compare(startDateTime!) == NSComparisonResult.OrderedDescending {
+            return InvalidInputException(isInvalid: true, errorMessage: "Start Time for your workout is earlier than now.")
+        } else if self.selectedGym == nil {
+            return InvalidInputException(isInvalid: true, errorMessage: "Gym is not selected.")
+        }
+        /* later when tagging is implemented
+        else if self.Tags == nil {
+            return InvalidInputException(isInvalid: true, errorMessage: "There is no tag for the workout.")
+        }*/
+        return InvalidInputException()
     }
 }

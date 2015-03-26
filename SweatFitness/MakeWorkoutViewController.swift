@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import Parse
 
-class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIAlertViewDelegate {
     var formModel:MakeWorkoutFormModel?
     var gyms = ["SPAC","Blomquist","Patten"]
     var currentTF:UITextField?
     @IBOutlet weak var inputForm: UITableView!
-    
+    @IBOutlet weak var actIndicator: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
         formModel = MakeWorkoutFormModel()
@@ -30,17 +31,39 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
     @IBAction func next() {
         //TODO: implement this
         //validate user-input data
-        if formModel!.validateFormModel() {
+        let exception = formModel!.validateFormModel()
+        if exception.isInvalid! == false {
             //if it's valid
             //make async request (or sync?)
-            //perform segue
+            let newWorkoutObj = PFObject(className: "Workout")
+            newWorkoutObj["startTime"] = formModel!.startDateTime!
+            newWorkoutObj["endTime"] = formModel!.endDateTime!
+            newWorkoutObj["location"] = formModel!.selectedGym!
+            // not yet implemented
+            //newWorkoutObj["creator"] = PFUser.currentUser
+            //newWorkoutObj["tags"] = formModel!.Tags!
+            // show activity indicator
+            actIndicator.hidden = false
+            actIndicator.startAnimating()
+            newWorkoutObj.saveInBackgroundWithBlock({ (success: Bool, error:NSError!) -> Void in
+                if (success) {
+                    //stop acitivity indicator and perform segue
+                    self.actIndicator.hidden = true
+                    self.actIndicator.stopAnimating()
+                    self.performSegueWithIdentifier("suggestInviteSegue", sender: nil)
+                } else {
+                    println(error)
+                }
+            })
+            
         } else {
+            let alertView = UIAlertView(title: "Something's wrong...", message: exception.errorMessage, delegate: self, cancelButtonTitle: "Ok")
+            alertView.show()
             //alert user here. 
             //on screen alert (red marks) on input fields
             //should be dynamically shown to the user as they input
             //so call validateFormModel() every time user inputs a piece of data?
         }
-        
     }
     
     @IBAction func cancel(sender: AnyObject) {
