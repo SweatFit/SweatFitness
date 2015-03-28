@@ -14,52 +14,21 @@ class MainWorkoutViewController: UITableViewController {
     @IBOutlet var workoutTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let now = NSDate()
+        
         var query = PFQuery(className: "Workout")
-        query.includeKey("creator.username")
-        for gym in workouts.gyms! {
-            var query = PFQuery(className: "Workout")
-            query.whereKey("location", equalTo: gym)
-            query.findObjectsInBackgroundWithBlock({ (objects:[AnyObject]!, error:NSError!) -> Void in
-                if error == nil {
-                    //println("Successfully retrieved \(objects.count) workouts at \(gym)")
-                    //println(objects)
-                    var workouts = [Workout]()
-                    if let objects = objects as? [PFObject] {
-                        for obj in objects {
-                            let creator: AnyObject! = obj["creator"]
-                            //println(creator as PFUser)
-                            let startTime = obj["startTime"] as NSDate
-                            let endTime = obj["endTime"] as NSDate
-                            let location = obj["location"] as String
-                            let workout = Workout(creator: creator, startTime: startTime, endTime: endTime, location: location)
-                            workouts.append(workout)
-                        }
-                        self.workouts.workoutDict!.updateValue(workouts, forKey: gym)
-                    }
-                } else {
-                    println("Error: \(error) \(error.userInfo!)")
-                }
-                self.workoutTable.reloadData()
-            })
-        }
-        /*
+        query.includeKey("creator")
+        query.whereKey("startTime", greaterThan: now)
         query.findObjectsInBackgroundWithBlock { (objects:[AnyObject]!, error:NSError!) -> Void in
             if error == nil {
-                println("Successfully retrieved \(objects.count) workouts")
-                self.workoutObjects = objects as? [PFObject]
-                if let objects = objects as? [PFObject] {
-                    for object in objects {
-                        println(object["creator"])
-                        println(object["startTime"])
-                        println(object["endTime"])
-                        println(object["location"])
-                    }
+                if let objs = objects as? [PFObject] {
+                    self.workouts.populateWorkoutWithObjects(objs)
                 }
                 self.workoutTable.reloadData()
             } else {
                 println("Error: \(error) \(error.userInfo!)")
             }
-        }*/
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -118,12 +87,14 @@ class MainWorkoutViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let gym = self.workouts.gyms![indexPath.section]
         let workoutForIndexPath = self.workouts.workoutDict![gym]![indexPath.row]
-        let formatter = NSDateFormatter()
+        let creator = workoutForIndexPath.creator
+        let firstName = creator["firstName"] as String
+        let lastName = creator["lastName"] as String
         let sTime  = NSDateFormatter.localizedStringFromDate(workoutForIndexPath.startTime!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         let eTime  = NSDateFormatter.localizedStringFromDate(workoutForIndexPath.endTime!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         var cell = tableView.dequeueReusableCellWithIdentifier("workoutCells") as WorkoutViewCell
         //println(cell.contentView.subviews)
-        cell.nameLabel.text = "admin"
+        cell.nameLabel.text = "\(firstName) \(lastName)"
         cell.timeLabel.text = "\(sTime) - \(eTime)"
         return cell
     }

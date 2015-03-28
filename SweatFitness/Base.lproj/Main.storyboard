@@ -122,11 +122,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="blW-Lc-K8B" id="jxw-jb-fct">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s4r-jF-Tzz" customClass="MyTextField" customModule="SweatFitness" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="16" width="264" height="36"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="36" id="0Ks-1y-Sfz"/>
-                                                    </constraints>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s4r-jF-Tzz" customClass="MyTextField" customModule="SweatFitness" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="16" width="264" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="yes" keyboardType="twitter"/>
                                                     <connections>
@@ -163,11 +160,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PzN-Ra-BMV" id="SfY-tg-jXH">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0F9-mw-ctb">
-                                                    <rect key="frame" x="16" y="16" width="264" height="36"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="36" id="G11-2G-cJN"/>
-                                                    </constraints>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0F9-mw-ctb">
+                                                    <rect key="frame" x="16" y="16" width="264" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="yes" keyboardType="twitter"/>
                                                     <connections>
@@ -544,6 +538,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="2cU-j6-Tlj"/>
+        <segue reference="wnc-oa-MhA"/>
     </inferredMetricsTieBreakers>
 </document>
