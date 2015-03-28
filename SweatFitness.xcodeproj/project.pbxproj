@@ -11,6 +11,7 @@
 		3BEB08A91AC2AD03002097D4 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BEB08A81AC2AD03002097D4 /* Accounts.framework */; };
 		3BEB08AB1AC2AD09002097D4 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BEB08AA1AC2AD09002097D4 /* Social.framework */; };
 		3BEB08B01AC2E6C5002097D4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BEB08AF1AC2E6C5002097D4 /* logo.png */; };
+		3BEB08B21AC712D3002097D4 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEB08B11AC712D3002097D4 /* SignUpViewController.swift */; };
 		D708D9441AC0673700480DD2 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D708D9421AC0673700480DD2 /* Bolts.framework */; };
 		D708D9451AC0673700480DD2 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D708D9431AC0673700480DD2 /* Parse.framework */; };
 		D708D9471AC0675600480DD2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D708D9461AC0675600480DD2 /* AudioToolbox.framework */; };
@@ -55,6 +56,7 @@
 		3BEB08AA1AC2AD09002097D4 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		3BEB08AE1AC2DCF7002097D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		3BEB08AF1AC2E6C5002097D4 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		3BEB08B11AC712D3002097D4 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D708D9421AC0673700480DD2 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		D708D9431AC0673700480DD2 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		D708D9461AC0675600480DD2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -171,6 +173,7 @@
 				D783A3041AC05CC300990C43 /* Main.storyboard */,
 				3BEB08AF1AC2E6C5002097D4 /* logo.png */,
 				D708D95D1AC0ADBA00480DD2 /* LoginViewController.swift */,
+				3BEB08B11AC712D3002097D4 /* SignUpViewController.swift */,
 				D783A3071AC05CC300990C43 /* Images.xcassets */,
 				D783A3091AC05CC300990C43 /* LaunchScreen.xib */,
 				D783A2FC1AC05CC300990C43 /* Supporting Files */,
@@ -308,6 +311,7 @@
 				D783A3281AC0610700990C43 /* WorkoutDatasource.swift in Sources */,
 				D783A3031AC05CC300990C43 /* SecondViewController.swift in Sources */,
 				D783A3251AC0610700990C43 /* MainWorkoutViewController.swift in Sources */,
+				3BEB08B21AC712D3002097D4 /* SignUpViewController.swift in Sources */,
 				D783A3271AC0610700990C43 /* SuggestInviteViewController.swift in Sources */,
 				D783A3261AC0610700990C43 /* MakeWorkoutViewController.swift in Sources */,
 				D783A2FF1AC05CC300990C43 /* AppDelegate.swift in Sources */,
