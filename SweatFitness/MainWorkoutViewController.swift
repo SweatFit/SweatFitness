@@ -23,6 +23,7 @@ class MainWorkoutViewController: UITableViewController {
         var query = PFQuery(className: "Workout")
         query.includeKey("creator")
         query.whereKey("startTime", greaterThan: now)
+        //query.whereKey("taken", equalTo: false)
         query.findObjectsInBackgroundWithBlock { (objects:[AnyObject]!, error:NSError!) -> Void in
             if error == nil {
                 if let objs = objects as? [PFObject] {
@@ -54,20 +55,21 @@ class MainWorkoutViewController: UITableViewController {
         //let indexPath = self.workoutTable.indexPathForRowAtPoint(point)
         sender.setImage(UIImage(named: "check"), forState: UIControlState.Normal)
         if (indexPath != nil) {
-            println(indexPath)
             self.tableView(self.workoutTable, accessoryButtonTappedForRowWithIndexPath: indexPath!)
         }
     }
     
     override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+        let me = PFUser.currentUser()
+        let creator = workouts.findWorkoutCreator(accessoryButtonTappedForRowWithIndexPath: indexPath)
+        let workoutID = workouts.findWorkoutID(accessoryButtonTappedForRowWithIndexPath: indexPath)
+        println(workoutID)
+        println(creator)
         println("request workout")
+        
+        
     }
     
-    /*
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.workouts.gyms![section]
-    }
-    */
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let img = UIImage(named: "hexagon")
         let button = UIButton()

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B89E5951AC878C7007D498C /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B89E5941AC878C7007D498C /* ParseFacebookUtils.framework */; };
+		3B89E5971AC92463007D498C /* RequestDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B89E5961AC92463007D498C /* RequestDatasource.swift */; };
 		3BEB08A71AC2A8AF002097D4 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BEB08A61AC2A8AE002097D4 /* ParseUI.framework */; };
 		3BEB08A91AC2AD03002097D4 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BEB08A81AC2AD03002097D4 /* Accounts.framework */; };
 		3BEB08AB1AC2AD09002097D4 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BEB08AA1AC2AD09002097D4 /* Social.framework */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		3B89E5941AC878C7007D498C /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		3B89E5961AC92463007D498C /* RequestDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDatasource.swift; sourceTree = "<group>"; };
 		3BEB08A61AC2A8AE002097D4 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		3BEB08A81AC2AD03002097D4 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		3BEB08AA1AC2AD09002097D4 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -199,6 +201,7 @@
 				D783A3071AC05CC300990C43 /* Images.xcassets */,
 				D783A3091AC05CC300990C43 /* LaunchScreen.xib */,
 				D783A2FC1AC05CC300990C43 /* Supporting Files */,
+				3B89E5961AC92463007D498C /* RequestDatasource.swift */,
 			);
 			path = SweatFitness;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				D783A3281AC0610700990C43 /* WorkoutDatasource.swift in Sources */,
 				D783A3031AC05CC300990C43 /* SecondViewController.swift in Sources */,
 				D70E29E41AC236C4009DD9A0 /* MakeWorktouFormModel.swift in Sources */,
+				3B89E5971AC92463007D498C /* RequestDatasource.swift in Sources */,
 				D783A3251AC0610700990C43 /* MainWorkoutViewController.swift in Sources */,
 				3BEB08B21AC712D3002097D4 /* SignUpViewController.swift in Sources */,
 				D78BEE3F1AC90CAC0025AF0C /* SuggestionsViewController.swift in Sources */,
