@@ -47,7 +47,7 @@ class WorkoutRequest : BaseRequest {
         var saved:Bool?
         self.requestObj["senderID"] = self.sourceID
         self.requestObj["receiverID"] = self.destID
-        self.requestObj["taxrgetWorkoutID"] = self.targetWorkoutID
+        self.requestObj["targetWorkoutID"] = self.targetWorkoutID
         requestObj.saveInBackgroundWithBlock {
             (success: Bool, Error: NSError!) -> Void in
             if(success) {
