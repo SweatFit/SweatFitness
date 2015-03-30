@@ -41,6 +41,10 @@
 		D783A3271AC0610700990C43 /* SuggestInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D783A3221AC0610700990C43 /* SuggestInviteViewController.swift */; };
 		D783A3281AC0610700990C43 /* WorkoutDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D783A3231AC0610700990C43 /* WorkoutDatasource.swift */; };
 		D783A3291AC0610700990C43 /* WorkoutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D783A3241AC0610700990C43 /* WorkoutViewCell.swift */; };
+		D78BEE3D1AC90A530025AF0C /* SegmentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78BEE3C1AC90A530025AF0C /* SegmentsController.swift */; };
+		D78BEE3F1AC90CAC0025AF0C /* SuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78BEE3E1AC90CAC0025AF0C /* SuggestionsViewController.swift */; };
+		D78BEE411AC90D0B0025AF0C /* SuggestInvite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D78BEE401AC90D0B0025AF0C /* SuggestInvite.storyboard */; };
+		D78BEE431AC9130D0025AF0C /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78BEE421AC9130D0025AF0C /* InviteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +98,10 @@
 		D783A3221AC0610700990C43 /* SuggestInviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestInviteViewController.swift; sourceTree = "<group>"; };
 		D783A3231AC0610700990C43 /* WorkoutDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutDatasource.swift; sourceTree = "<group>"; };
 		D783A3241AC0610700990C43 /* WorkoutViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutViewCell.swift; sourceTree = "<group>"; };
+		D78BEE3C1AC90A530025AF0C /* SegmentsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentsController.swift; sourceTree = "<group>"; };
+		D78BEE3E1AC90CAC0025AF0C /* SuggestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionsViewController.swift; sourceTree = "<group>"; };
+		D78BEE401AC90D0B0025AF0C /* SuggestInvite.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SuggestInvite.storyboard; sourceTree = "<group>"; };
+		D78BEE421AC9130D0025AF0C /* InviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,12 +183,16 @@
 				D70E29E31AC236C4009DD9A0 /* MakeWorktouFormModel.swift */,
 				D70E29DD1AC1D535009DD9A0 /* MakeWorkoutInputFieldCell.swift */,
 				D783A3221AC0610700990C43 /* SuggestInviteViewController.swift */,
+				D78BEE3E1AC90CAC0025AF0C /* SuggestionsViewController.swift */,
+				D78BEE421AC9130D0025AF0C /* InviteViewController.swift */,
+				D78BEE3C1AC90A530025AF0C /* SegmentsController.swift */,
 				D783A3231AC0610700990C43 /* WorkoutDatasource.swift */,
 				D783A3241AC0610700990C43 /* WorkoutViewCell.swift */,
 				D783A2FE1AC05CC300990C43 /* AppDelegate.swift */,
 				D783A3001AC05CC300990C43 /* FirstViewController.swift */,
 				D783A3021AC05CC300990C43 /* SecondViewController.swift */,
 				D783A3041AC05CC300990C43 /* Main.storyboard */,
+				D78BEE401AC90D0B0025AF0C /* SuggestInvite.storyboard */,
 				3BEB08AF1AC2E6C5002097D4 /* logo.png */,
 				D708D95D1AC0ADBA00480DD2 /* LoginViewController.swift */,
 				3BEB08B11AC712D3002097D4 /* SignUpViewController.swift */,
@@ -298,6 +310,7 @@
 			files = (
 				3BEB08B01AC2E6C5002097D4 /* logo.png in Resources */,
 				D783A3061AC05CC300990C43 /* Main.storyboard in Resources */,
+				D78BEE411AC90D0B0025AF0C /* SuggestInvite.storyboard in Resources */,
 				D783A30B1AC05CC300990C43 /* LaunchScreen.xib in Resources */,
 				D783A3081AC05CC300990C43 /* Images.xcassets in Resources */,
 			);
@@ -323,11 +336,14 @@
 				D70E29E41AC236C4009DD9A0 /* MakeWorktouFormModel.swift in Sources */,
 				D783A3251AC0610700990C43 /* MainWorkoutViewController.swift in Sources */,
 				3BEB08B21AC712D3002097D4 /* SignUpViewController.swift in Sources */,
+				D78BEE3F1AC90CAC0025AF0C /* SuggestionsViewController.swift in Sources */,
 				D783A3271AC0610700990C43 /* SuggestInviteViewController.swift in Sources */,
 				D783A3261AC0610700990C43 /* MakeWorkoutViewController.swift in Sources */,
+				D78BEE431AC9130D0025AF0C /* InviteViewController.swift in Sources */,
 				D783A2FF1AC05CC300990C43 /* AppDelegate.swift in Sources */,
 				D783A3291AC0610700990C43 /* WorkoutViewCell.swift in Sources */,
 				D783A3011AC05CC300990C43 /* FirstViewController.swift in Sources */,
+				D78BEE3D1AC90A530025AF0C /* SegmentsController.swift in Sources */,
 				D70E29DE1AC1D535009DD9A0 /* MakeWorkoutInputFieldCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
