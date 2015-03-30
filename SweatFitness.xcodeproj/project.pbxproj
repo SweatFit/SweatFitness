@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B89E5951AC878C7007D498C /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B89E5941AC878C7007D498C /* ParseFacebookUtils.framework */; };
+		3BEB08A71AC2A8AF002097D4 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BEB08A61AC2A8AE002097D4 /* ParseUI.framework */; };
+		3BEB08A91AC2AD03002097D4 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BEB08A81AC2AD03002097D4 /* Accounts.framework */; };
+		3BEB08AB1AC2AD09002097D4 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BEB08AA1AC2AD09002097D4 /* Social.framework */; };
+		3BEB08B01AC2E6C5002097D4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BEB08AF1AC2E6C5002097D4 /* logo.png */; };
+		3BEB08B21AC712D3002097D4 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEB08B11AC712D3002097D4 /* SignUpViewController.swift */; };
 		D708D9441AC0673700480DD2 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D708D9421AC0673700480DD2 /* Bolts.framework */; };
 		D708D9451AC0673700480DD2 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D708D9431AC0673700480DD2 /* Parse.framework */; };
 		D708D9471AC0675600480DD2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D708D9461AC0675600480DD2 /* AudioToolbox.framework */; };
@@ -48,6 +54,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B89E5941AC878C7007D498C /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		3BEB08A61AC2A8AE002097D4 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		3BEB08A81AC2AD03002097D4 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		3BEB08AA1AC2AD09002097D4 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		3BEB08AE1AC2DCF7002097D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		3BEB08AF1AC2E6C5002097D4 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		3BEB08B11AC712D3002097D4 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D708D9421AC0673700480DD2 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		D708D9431AC0673700480DD2 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		D708D9461AC0675600480DD2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -88,8 +101,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BEB08AB1AC2AD09002097D4 /* Social.framework in Frameworks */,
+				3BEB08A91AC2AD03002097D4 /* Accounts.framework in Frameworks */,
 				D708D95B1AC067A000480DD2 /* libsqlite3.dylib in Frameworks */,
 				D708D9591AC0679800480DD2 /* libz.dylib in Frameworks */,
+				3BEB08A71AC2A8AF002097D4 /* ParseUI.framework in Frameworks */,
+				3B89E5951AC878C7007D498C /* ParseFacebookUtils.framework in Frameworks */,
 				D708D9571AC0679000480DD2 /* SystemConfiguration.framework in Frameworks */,
 				D708D9551AC0678800480DD2 /* StoreKit.framework in Frameworks */,
 				D708D9531AC0678100480DD2 /* Security.framework in Frameworks */,
@@ -117,6 +134,8 @@
 		D783A2F01AC05CC300990C43 = {
 			isa = PBXGroup;
 			children = (
+				3BEB08AA1AC2AD09002097D4 /* Social.framework */,
+				3BEB08A81AC2AD03002097D4 /* Accounts.framework */,
 				D708D95A1AC067A000480DD2 /* libsqlite3.dylib */,
 				D708D9581AC0679800480DD2 /* libz.dylib */,
 				D708D9561AC0679000480DD2 /* SystemConfiguration.framework */,
@@ -146,7 +165,9 @@
 		D783A2FB1AC05CC300990C43 /* SweatFitness */ = {
 			isa = PBXGroup;
 			children = (
+				3B89E5941AC878C7007D498C /* ParseFacebookUtils.framework */,
 				D708D95C1AC0685400480DD2 /* SweatFitness-Bridging-Header.h */,
+				3BEB08A61AC2A8AE002097D4 /* ParseUI.framework */,
 				D708D9421AC0673700480DD2 /* Bolts.framework */,
 				D708D9431AC0673700480DD2 /* Parse.framework */,
 				D783A3201AC0610700990C43 /* MainWorkoutViewController.swift */,
@@ -160,7 +181,9 @@
 				D783A3001AC05CC300990C43 /* FirstViewController.swift */,
 				D783A3021AC05CC300990C43 /* SecondViewController.swift */,
 				D783A3041AC05CC300990C43 /* Main.storyboard */,
+				3BEB08AF1AC2E6C5002097D4 /* logo.png */,
 				D708D95D1AC0ADBA00480DD2 /* LoginViewController.swift */,
+				3BEB08B11AC712D3002097D4 /* SignUpViewController.swift */,
 				D783A3071AC05CC300990C43 /* Images.xcassets */,
 				D783A3091AC05CC300990C43 /* LaunchScreen.xib */,
 				D783A2FC1AC05CC300990C43 /* Supporting Files */,
@@ -273,6 +296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BEB08B01AC2E6C5002097D4 /* logo.png in Resources */,
 				D783A3061AC05CC300990C43 /* Main.storyboard in Resources */,
 				D783A30B1AC05CC300990C43 /* LaunchScreen.xib in Resources */,
 				D783A3081AC05CC300990C43 /* Images.xcassets in Resources */,
@@ -298,6 +322,7 @@
 				D783A3031AC05CC300990C43 /* SecondViewController.swift in Sources */,
 				D70E29E41AC236C4009DD9A0 /* MakeWorktouFormModel.swift in Sources */,
 				D783A3251AC0610700990C43 /* MainWorkoutViewController.swift in Sources */,
+				3BEB08B21AC712D3002097D4 /* SignUpViewController.swift in Sources */,
 				D783A3271AC0610700990C43 /* SuggestInviteViewController.swift in Sources */,
 				D783A3261AC0610700990C43 /* MakeWorkoutViewController.swift in Sources */,
 				D783A2FF1AC05CC300990C43 /* AppDelegate.swift in Sources */,
@@ -330,6 +355,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				D783A3051AC05CC300990C43 /* Base */,
+				3BEB08AE1AC2DCF7002097D4 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
