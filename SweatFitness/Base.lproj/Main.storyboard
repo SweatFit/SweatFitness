@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ZNm-Pi-JkZ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -19,14 +19,17 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7jN-B3-6wl" id="7ei-Om-XPu">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D82-UJ-c8v">
-                                            <rect key="frame" x="22" y="8" width="104" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D82-UJ-c8v">
+                                            <rect key="frame" x="22" y="8" width="260" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAr-Dk-spA">
-                                            <rect key="frame" x="22" y="37" width="137" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAr-Dk-spA">
+                                            <rect key="frame" x="22" y="37" width="260" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="6sJ-hR-WCh"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -42,8 +45,14 @@
                                         </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="D82-UJ-c8v" firstAttribute="leading" secondItem="7ei-Om-XPu" secondAttribute="leadingMargin" constant="14" id="AMq-RC-Eum"/>
+                                        <constraint firstItem="TAr-Dk-spA" firstAttribute="top" secondItem="D82-UJ-c8v" secondAttribute="bottom" constant="8" id="KjZ-6g-GIB"/>
+                                        <constraint firstItem="D82-UJ-c8v" firstAttribute="top" secondItem="7ei-Om-XPu" secondAttribute="topMargin" id="WMd-i2-Jek"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="D82-UJ-c8v" secondAttribute="trailing" constant="30" id="XQe-k1-KUT"/>
                                         <constraint firstItem="Zjb-0V-2bT" firstAttribute="trailing" secondItem="7ei-Om-XPu" secondAttribute="trailingMargin" id="Z8U-B8-6MC"/>
+                                        <constraint firstItem="TAr-Dk-spA" firstAttribute="leading" secondItem="7ei-Om-XPu" secondAttribute="leadingMargin" constant="14" id="d5C-6d-7uY"/>
                                         <constraint firstAttribute="centerY" secondItem="Zjb-0V-2bT" secondAttribute="centerY" constant="0.25" id="uMk-bq-OA4"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="TAr-Dk-spA" secondAttribute="trailing" constant="30" id="xkS-oc-yDp"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -469,6 +478,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="wnc-oa-MhA"/>
+        <segue reference="2cU-j6-Tlj"/>
     </inferredMetricsTieBreakers>
 </document>

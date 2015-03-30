@@ -43,7 +43,7 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
             newWorkoutObj["location"] = formModel!.selectedGym!
             newWorkoutObj["tags"] = formModel!.Tags!
             // not yet implemented
-            //newWorkoutObj["creator"] = PFUser.currentUser
+            newWorkoutObj["creator"] = PFUser.currentUser()
             // show activity indicator
             actIndicator.hidden = false
             actIndicator.startAnimating()

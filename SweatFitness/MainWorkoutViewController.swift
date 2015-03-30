@@ -12,10 +12,14 @@ import Parse
 class MainWorkoutViewController: UITableViewController {
     var workouts = WorkoutCollection()
     @IBOutlet var workoutTable: UITableView!
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.refreshWorkouts()
+    }
+    
+    func refreshWorkouts () {
         let now = NSDate()
-        
         var query = PFQuery(className: "Workout")
         query.includeKey("creator")
         query.whereKey("startTime", greaterThan: now)
@@ -29,6 +33,11 @@ class MainWorkoutViewController: UITableViewController {
                 println("Error: \(error) \(error.userInfo!)")
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.refreshWorkouts()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
