@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class MainWorkoutViewController: UITableViewController {
+class MainWorkoutViewController: UITableViewController, BaseRequestDelegate {
     var workouts = WorkoutCollection()
     @IBOutlet var workoutTable: UITableView!
     
@@ -63,11 +63,15 @@ class MainWorkoutViewController: UITableViewController {
         let me = PFUser.currentUser()
         let creator = workouts.findWorkoutCreator(accessoryButtonTappedForRowWithIndexPath: indexPath)
         let workoutID = workouts.findWorkoutID(accessoryButtonTappedForRowWithIndexPath: indexPath)
-        println(workoutID)
-        println(creator)
+        let request = WorkoutRequest(sourceID: me.objectId, destID: creator.objectId, targetWorkoutID: workoutID)
+        request.delegate = self
+        request.makeRequest()
         println("request workout")
         
-        
+    }
+    
+    func saveRequestSuccess(success: Bool) {
+        println("Success")
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -107,6 +111,10 @@ class MainWorkoutViewController: UITableViewController {
         //println(cell.contentView.subviews)
         cell.nameLabel.text = "\(firstName) \(lastName)"
         cell.timeLabel.text = "\(sTime) - \(eTime)"
+        if creator.objectId == PFUser.currentUser().objectId {
+            cell.requestButton.hidden = true
+            cell.requestButton.userInteractionEnabled = false
+        }
         return cell
     }
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
