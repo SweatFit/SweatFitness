@@ -11,6 +11,7 @@ import Parse
 
 class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIAlertViewDelegate {
     var formModel:MakeWorkoutFormModel?
+    var savedWorkoutObj:PFObject?
     var gyms = ["SPAC","Blomquist","Patten"]
     var currentTF:UITextField?
     var tap:UITapGestureRecognizer?
@@ -52,6 +53,7 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
                     //stop acitivity indicator and perform segue
                     self.actIndicator.hidden = true
                     self.actIndicator.stopAnimating()
+                    self.savedWorkoutObj = newWorkoutObj
                     self.performSegueWithIdentifier("suggestInviteSegue", sender: nil)
                 } else {
                     println(error)
@@ -66,6 +68,15 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
             //should be dynamically shown to the user as they input
             //so call validateFormModel() every time user inputs a piece of data?
         }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+        if segue.identifier == "suggestInviteSegue" {
+            let vc = segue.destinationViewController as SuggestInviteViewController
+            vc.createdWorkout = self.savedWorkoutObj
+        }
+        
     }
     
     @IBAction func cancel(sender: AnyObject) {

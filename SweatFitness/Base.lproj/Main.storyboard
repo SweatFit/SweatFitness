@@ -254,28 +254,31 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkB-uD-JsS">
-                                <rect key="frame" x="139" y="245" width="42" height="21"/>
+                                <rect key="frame" x="139" y="245" width="41.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggestion" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6K-LE-bRh">
-                                <rect key="frame" x="117" y="189" width="87" height="21"/>
+                                <rect key="frame" x="117" y="189" width="87" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="and" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYM-rj-9pV">
-                                <rect key="frame" x="145" y="216" width="29" height="21"/>
+                                <rect key="frame" x="145" y="216" width="29" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vTv-77-OFl">
-                                <rect key="frame" x="98" y="72" width="123" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vTv-77-OFl">
+                                <rect key="frame" x="69" y="72" width="182" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="182" id="0rc-Zu-LOq"/>
+                                </constraints>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="Suggestions"/>
+                                    <segment title="Invite"/>
                                 </segments>
                             </segmentedControl>
                         </subviews>
@@ -283,15 +286,20 @@
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="HUl-54-6MG" secondAttribute="centerX" id="4Yz-V5-NMH"/>
                             <constraint firstItem="OkB-uD-JsS" firstAttribute="top" secondItem="QQM-Mz-9U6" secondAttribute="bottom" constant="181" id="EnJ-Ci-Q5d"/>
+                            <constraint firstItem="vTv-77-OFl" firstAttribute="top" secondItem="QQM-Mz-9U6" secondAttribute="bottom" constant="8" id="GPq-Xb-cQv"/>
                             <constraint firstAttribute="centerX" secondItem="c6K-LE-bRh" secondAttribute="centerX" constant="-0.5" id="LrB-5I-OqU"/>
                             <constraint firstAttribute="centerX" secondItem="kYM-rj-9pV" secondAttribute="centerX" constant="0.5" id="WTC-v2-sGr"/>
                             <constraint firstAttribute="centerX" secondItem="OkB-uD-JsS" secondAttribute="centerX" id="dEG-U0-Kno"/>
                             <constraint firstItem="cx8-2A-q1x" firstAttribute="top" secondItem="HUl-54-6MG" secondAttribute="bottom" constant="20" id="gVq-Z0-JYe"/>
                             <constraint firstItem="c6K-LE-bRh" firstAttribute="top" secondItem="QQM-Mz-9U6" secondAttribute="bottom" constant="125" id="l8L-Ko-U2W"/>
                             <constraint firstItem="kYM-rj-9pV" firstAttribute="top" secondItem="QQM-Mz-9U6" secondAttribute="bottom" constant="152" id="mzl-6f-1cd"/>
+                            <constraint firstAttribute="centerX" secondItem="vTv-77-OFl" secondAttribute="centerX" constant="-0.5" id="uuS-h1-VfE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RWp-Qf-9OB"/>
+                    <connections>
+                        <outlet property="segControl" destination="vTv-77-OFl" id="jj3-Rq-2Tg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8L8-FK-eRC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
