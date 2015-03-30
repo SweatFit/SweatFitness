@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B89E5951AC878C7007D498C /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B89E5941AC878C7007D498C /* ParseFacebookUtils.framework */; };
 		3BEB08A71AC2A8AF002097D4 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BEB08A61AC2A8AE002097D4 /* ParseUI.framework */; };
 		3BEB08A91AC2AD03002097D4 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BEB08A81AC2AD03002097D4 /* Accounts.framework */; };
 		3BEB08AB1AC2AD09002097D4 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BEB08AA1AC2AD09002097D4 /* Social.framework */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B89E5941AC878C7007D498C /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		3BEB08A61AC2A8AE002097D4 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		3BEB08A81AC2AD03002097D4 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		3BEB08AA1AC2AD09002097D4 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -100,6 +102,7 @@
 				D708D95B1AC067A000480DD2 /* libsqlite3.dylib in Frameworks */,
 				D708D9591AC0679800480DD2 /* libz.dylib in Frameworks */,
 				3BEB08A71AC2A8AF002097D4 /* ParseUI.framework in Frameworks */,
+				3B89E5951AC878C7007D498C /* ParseFacebookUtils.framework in Frameworks */,
 				D708D9571AC0679000480DD2 /* SystemConfiguration.framework in Frameworks */,
 				D708D9551AC0678800480DD2 /* StoreKit.framework in Frameworks */,
 				D708D9531AC0678100480DD2 /* Security.framework in Frameworks */,
@@ -158,6 +161,7 @@
 		D783A2FB1AC05CC300990C43 /* SweatFitness */ = {
 			isa = PBXGroup;
 			children = (
+				3B89E5941AC878C7007D498C /* ParseFacebookUtils.framework */,
 				D708D95C1AC0685400480DD2 /* SweatFitness-Bridging-Header.h */,
 				3BEB08A61AC2A8AE002097D4 /* ParseUI.framework */,
 				D708D9421AC0673700480DD2 /* Bolts.framework */,
