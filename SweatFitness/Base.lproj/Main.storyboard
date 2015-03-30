@@ -395,7 +395,7 @@
         <!--Profile-->
         <scene sceneID="oPp-Jr-hY6">
             <objects>
-                <viewController id="y2q-AJ-HJB" customClass="InviteViewController" customModule="SweatFitness" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="y2q-AJ-HJB" customClass="ProfileViewController" customModule="SweatFitness" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uZe-MD-XSI"/>
                         <viewControllerLayoutGuide type="bottom" id="4P5-S8-7wk"/>
@@ -404,11 +404,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="N4A-tK-cdY">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="N4A-tK-cdY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="profileComponentCell" rowHeight="70" id="tMQ-Vk-D3E">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="ppicCell" rowHeight="70" id="tMQ-Vk-D3E" customClass="ProfPicCell" customModule="SweatFitness" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tMQ-Vk-D3E" id="bIF-gt-FTz">
@@ -421,17 +422,60 @@
                                                         <constraint firstAttribute="height" constant="60" id="pmB-mK-bWg"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOl-ta-6HK">
+                                                    <rect key="frame" x="76" y="24" width="211" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="centerY" secondItem="ua8-cH-yYz" secondAttribute="centerY" constant="-0.25" id="2iI-Gq-Ksc"/>
+                                                <constraint firstItem="NOl-ta-6HK" firstAttribute="leading" secondItem="ua8-cH-yYz" secondAttribute="trailing" constant="8" id="7UK-Dt-ct6"/>
+                                                <constraint firstItem="ua8-cH-yYz" firstAttribute="centerY" secondItem="NOl-ta-6HK" secondAttribute="centerY" id="Oe5-zY-Nfl"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="NOl-ta-6HK" secondAttribute="trailing" constant="25" id="XWC-4n-edE"/>
                                                 <constraint firstItem="ua8-cH-yYz" firstAttribute="leading" secondItem="bIF-gt-FTz" secondAttribute="leadingMargin" id="tzr-X9-VkX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="namelabel" destination="NOl-ta-6HK" id="ac2-0c-lUC"/>
+                                            <outlet property="picView" destination="ua8-cH-yYz" id="jFv-T1-Mu8"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" reuseIdentifier="myWorkoutCell" rowHeight="44" id="sMv-qU-2z5" customClass="MyWorkoutCell" customModule="SweatFitness" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sMv-qU-2z5" id="ulH-9H-YMK">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My workouts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJ0-Hs-fOQ">
+                                                    <rect key="frame" x="8" y="11.5" width="273" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bJ0-Hs-fOQ" firstAttribute="leading" secondItem="ulH-9H-YMK" secondAttribute="leadingMargin" id="AdJ-rI-vkE"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="bJ0-Hs-fOQ" secondAttribute="trailing" constant="-2" id="Ked-Gm-qVg"/>
+                                                <constraint firstAttribute="centerY" secondItem="bJ0-Hs-fOQ" secondAttribute="centerY" constant="0.25" id="VSI-uO-PF8"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="y2q-AJ-HJB" id="EUp-dE-27p"/>
+                                    <outlet property="delegate" destination="y2q-AJ-HJB" id="GkT-ol-gjJ"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="N4A-tK-cdY" firstAttribute="bottom" secondItem="D8Y-xp-swn" secondAttribute="bottomMargin" id="45A-MH-73o"/>
+                            <constraint firstItem="N4A-tK-cdY" firstAttribute="top" secondItem="D8Y-xp-swn" secondAttribute="topMargin" id="blh-Fh-Tfr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="N4A-tK-cdY" secondAttribute="trailing" constant="-16" id="hep-d0-OF2"/>
+                            <constraint firstItem="N4A-tK-cdY" firstAttribute="leading" secondItem="D8Y-xp-swn" secondAttribute="leadingMargin" constant="-16" id="pig-VN-IM2"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="eta-Nm-Azt">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="RTj-rf-Bl0">
@@ -440,10 +484,94 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="f7H-0z-VZw" kind="push" identifier="myWorkoutSegue" id="7FK-YI-olP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="clA-Bu-FGM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="881" y="912"/>
+        </scene>
+        <!--MyWorkout-->
+        <scene sceneID="qMp-YJ-0pc">
+            <objects>
+                <viewController title="MyWorkout" id="f7H-0z-VZw" customClass="MyWorkoutViewController" customModule="SweatFitness" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0nw-sj-xBn"/>
+                        <viewControllerLayoutGuide type="bottom" id="52b-ar-8uU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yWp-n5-jZy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="BEm-r2-a11">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="requestCell" id="7Pz-yp-9xf" customClass="RequestCell" customModule="SweatFitness" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Pz-yp-9xf" id="g84-u0-R9t">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cc5-Q2-YR4">
+                                                    <rect key="frame" x="8" y="11.5" width="227" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVu-6p-qIn">
+                                                    <rect key="frame" x="243" y="7" width="30" height="30"/>
+                                                    <state key="normal" title="Yes">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PnS-yr-0VO">
+                                                    <rect key="frame" x="282" y="7" width="30" height="30"/>
+                                                    <state key="normal" title="No">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Cc5-Q2-YR4" firstAttribute="leading" secondItem="g84-u0-R9t" secondAttribute="leadingMargin" id="1EY-U3-w8o"/>
+                                                <constraint firstItem="PnS-yr-0VO" firstAttribute="leading" secondItem="yVu-6p-qIn" secondAttribute="trailing" constant="9" id="CDy-jH-i8A"/>
+                                                <constraint firstItem="yVu-6p-qIn" firstAttribute="leading" secondItem="Cc5-Q2-YR4" secondAttribute="trailing" constant="8" id="CWx-pv-PeK"/>
+                                                <constraint firstAttribute="centerY" secondItem="Cc5-Q2-YR4" secondAttribute="centerY" constant="0.25" id="mPb-GS-eMO"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Cc5-Q2-YR4" secondAttribute="trailing" constant="77" id="t2J-RV-KuV"/>
+                                                <constraint firstItem="yVu-6p-qIn" firstAttribute="centerY" secondItem="Cc5-Q2-YR4" secondAttribute="centerY" constant="0.25" id="vWM-bm-ejp"/>
+                                                <constraint firstItem="PnS-yr-0VO" firstAttribute="centerY" secondItem="yVu-6p-qIn" secondAttribute="centerY" id="yXr-eY-kDA"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="Cc5-Q2-YR4" id="PbN-9a-TdH"/>
+                                            <outlet property="noButton" destination="PnS-yr-0VO" id="nGw-UN-d7a"/>
+                                            <outlet property="yesButton" destination="yVu-6p-qIn" id="Vps-FG-aFN"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="f7H-0z-VZw" id="dkC-w2-i5W"/>
+                                    <outlet property="delegate" destination="f7H-0z-VZw" id="563-ia-0IR"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BEm-r2-a11" firstAttribute="bottom" secondItem="yWp-n5-jZy" secondAttribute="bottomMargin" id="0zA-J1-NcO"/>
+                            <constraint firstItem="BEm-r2-a11" firstAttribute="leading" secondItem="yWp-n5-jZy" secondAttribute="leadingMargin" constant="-16" id="E6o-T2-NSM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BEm-r2-a11" secondAttribute="trailing" constant="-16" id="TZE-yb-ScM"/>
+                            <constraint firstItem="BEm-r2-a11" firstAttribute="top" secondItem="yWp-n5-jZy" secondAttribute="topMargin" id="UjS-77-fgC"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="My Workouts" id="UoR-31-82w"/>
+                    <connections>
+                        <outlet property="requestTable" destination="BEm-r2-a11" id="0El-CM-EGq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Jt-wf-aZY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="881" y="1589"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

@@ -27,6 +27,7 @@ class MainWorkoutViewController: UITableViewController, BaseRequestDelegate {
         query.findObjectsInBackgroundWithBlock { (objects:[AnyObject]!, error:NSError!) -> Void in
             if error == nil {
                 if let objs = objects as? [PFObject] {
+                    println(objs)
                     self.workouts.populateWorkoutWithObjects(objs)
                 }
                 self.workoutTable.reloadData()

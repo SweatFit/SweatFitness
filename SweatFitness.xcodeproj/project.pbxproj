@@ -30,6 +30,9 @@
 		D708D95E1AC0ADBA00480DD2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D708D95D1AC0ADBA00480DD2 /* LoginViewController.swift */; };
 		D70E29DE1AC1D535009DD9A0 /* MakeWorkoutInputFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70E29DD1AC1D535009DD9A0 /* MakeWorkoutInputFieldCell.swift */; };
 		D70E29E41AC236C4009DD9A0 /* MakeWorktouFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70E29E31AC236C4009DD9A0 /* MakeWorktouFormModel.swift */; };
+		D71E91191AC941BC00A55124 /* ProfPicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71E91181AC941BC00A55124 /* ProfPicCell.swift */; };
+		D71E911B1AC9470A00A55124 /* MyWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71E911A1AC9470A00A55124 /* MyWorkoutViewController.swift */; };
+		D71E911D1AC94CB200A55124 /* RequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71E911C1AC94CB200A55124 /* RequestCell.swift */; };
 		D73635F01AC93A070014B6B7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73635EF1AC93A070014B6B7 /* ProfileViewController.swift */; };
 		D783A2FF1AC05CC300990C43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D783A2FE1AC05CC300990C43 /* AppDelegate.swift */; };
 		D783A3011AC05CC300990C43 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D783A3001AC05CC300990C43 /* FirstViewController.swift */; };
@@ -85,6 +88,9 @@
 		D708D95D1AC0ADBA00480DD2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D70E29DD1AC1D535009DD9A0 /* MakeWorkoutInputFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeWorkoutInputFieldCell.swift; sourceTree = "<group>"; };
 		D70E29E31AC236C4009DD9A0 /* MakeWorktouFormModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeWorktouFormModel.swift; sourceTree = "<group>"; };
+		D71E91181AC941BC00A55124 /* ProfPicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfPicCell.swift; sourceTree = "<group>"; };
+		D71E911A1AC9470A00A55124 /* MyWorkoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWorkoutViewController.swift; sourceTree = "<group>"; };
+		D71E911C1AC94CB200A55124 /* RequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestCell.swift; sourceTree = "<group>"; };
 		D73635EF1AC93A070014B6B7 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D783A2F91AC05CC300990C43 /* SweatFitness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SweatFitness.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D783A2FD1AC05CC300990C43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -193,6 +199,9 @@
 				D783A3231AC0610700990C43 /* WorkoutDatasource.swift */,
 				D783A3241AC0610700990C43 /* WorkoutViewCell.swift */,
 				D73635EF1AC93A070014B6B7 /* ProfileViewController.swift */,
+				D71E91181AC941BC00A55124 /* ProfPicCell.swift */,
+				D71E911A1AC9470A00A55124 /* MyWorkoutViewController.swift */,
+				D71E911C1AC94CB200A55124 /* RequestCell.swift */,
 				D783A2FE1AC05CC300990C43 /* AppDelegate.swift */,
 				D783A3001AC05CC300990C43 /* FirstViewController.swift */,
 				D783A3021AC05CC300990C43 /* SecondViewController.swift */,
@@ -347,10 +356,13 @@
 				D78BEE3F1AC90CAC0025AF0C /* SuggestionsViewController.swift in Sources */,
 				D783A3271AC0610700990C43 /* SuggestInviteViewController.swift in Sources */,
 				D783A3261AC0610700990C43 /* MakeWorkoutViewController.swift in Sources */,
+				D71E91191AC941BC00A55124 /* ProfPicCell.swift in Sources */,
 				D78BEE431AC9130D0025AF0C /* InviteViewController.swift in Sources */,
+				D71E911B1AC9470A00A55124 /* MyWorkoutViewController.swift in Sources */,
 				D783A2FF1AC05CC300990C43 /* AppDelegate.swift in Sources */,
 				D783A3291AC0610700990C43 /* WorkoutViewCell.swift in Sources */,
 				D783A3011AC05CC300990C43 /* FirstViewController.swift in Sources */,
+				D71E911D1AC94CB200A55124 /* RequestCell.swift in Sources */,
 				D78BEE3D1AC90A530025AF0C /* SegmentsController.swift in Sources */,
 				D70E29DE1AC1D535009DD9A0 /* MakeWorkoutInputFieldCell.swift in Sources */,
 			);
