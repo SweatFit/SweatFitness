@@ -9,6 +9,24 @@
 import Foundation
 import Parse
 
+class WorkoutSuggestionCollection:NSObject {
+    var workouts:[Workout]?
+    override init () {
+        workouts = [Workout]()
+    }
+    func populateWorkoutWithObjects(objects:[PFObject]) {
+        for obj in objects {
+            let location = obj["location"] as String
+            let creator = obj["creator"] as PFUser
+            let workoutID = obj.objectId
+            let startTime = obj["startTime"] as NSDate
+            let endTime = obj["endTime"] as NSDate
+            let workout = Workout(creator: creator, workoutID: workoutID, startTime: startTime, endTime: endTime, location: location)
+            workouts!.append(workout)
+        }
+    }
+}
+
 class WorkoutCollection {
     var workoutDict:[String:[Workout]]?
     var sectionHidden:[Bool]?
