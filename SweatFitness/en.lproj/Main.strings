@@ -1,0 +1,48 @@
+
+/* Class = "UILabel"; text = "Information"; ObjectID = "7tf-e2-kJy"; */
+"7tf-e2-kJy.text" = "Information";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "D82-UJ-c8v"; */
+"D82-UJ-c8v.text" = "Name";
+
+/* Class = "UINavigationItem"; title = "Sweat"; ObjectID = "DW9-vG-Sse"; */
+"DW9-vG-Sse.title" = "Sweat";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "EiH-9n-89w"; */
+"EiH-9n-89w.normalTitle" = "Next";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "HUl-54-6MG"; */
+"HUl-54-6MG.normalTitle" = "Done";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "OD2-n5-qn6"; */
+"OD2-n5-qn6.title" = "Cancel";
+
+/* Class = "UITabBarItem"; title = "Sweat"; ObjectID = "OKh-gv-bez"; */
+"OKh-gv-bez.title" = "Sweat";
+
+/* Class = "UILabel"; text = "Invite"; ObjectID = "OkB-uD-JsS"; */
+"OkB-uD-JsS.text" = "Invite";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "TAr-Dk-spA"; */
+"TAr-Dk-spA.text" = "Time";
+
+/* Class = "UITabBarItem"; title = "Profile"; ObjectID = "b5D-AX-nsG"; */
+"b5D-AX-nsG.title" = "Profile";
+
+/* Class = "UILabel"; text = "Suggestion"; ObjectID = "c6K-LE-bRh"; */
+"c6K-LE-bRh.text" = "Suggestion";
+
+/* Class = "UILabel"; text = "and"; ObjectID = "kYM-rj-9pV"; */
+"kYM-rj-9pV.text" = "and";
+
+/* Class = "UILabel"; text = "User Input"; ObjectID = "oDc-cM-Ycw"; */
+"oDc-cM-Ycw.text" = "User Input";
+
+/* Class = "UITabBarItem"; title = "Groups"; ObjectID = "qEP-uL-Fme"; */
+"qEP-uL-Fme.title" = "Groups";
+
+/* Class = "UISegmentedControl"; vTv-77-OFl.segmentTitles[0] = "First"; ObjectID = "vTv-77-OFl"; */
+"vTv-77-OFl.segmentTitles[0]" = "First";
+
+/* Class = "UISegmentedControl"; vTv-77-OFl.segmentTitles[1] = "Second"; ObjectID = "vTv-77-OFl"; */
+"vTv-77-OFl.segmentTitles[1]" = "Second";
