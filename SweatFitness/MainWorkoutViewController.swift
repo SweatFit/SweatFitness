@@ -55,6 +55,7 @@ class MainWorkoutViewController: UITableViewController, BaseRequestDelegate {
         let indexPath = self.workoutTable.indexPathForCell(cell as UITableViewCell)
         //let indexPath = self.workoutTable.indexPathForRowAtPoint(point)
         sender.setImage(UIImage(named: "check"), forState: UIControlState.Normal)
+        cell?.userInteractionEnabled = false
         if (indexPath != nil) {
             self.tableView(self.workoutTable, accessoryButtonTappedForRowWithIndexPath: indexPath!)
         }
