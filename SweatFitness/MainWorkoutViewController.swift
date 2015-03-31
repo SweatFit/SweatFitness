@@ -40,6 +40,7 @@ class MainWorkoutViewController: UITableViewController, BaseRequestDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.refreshWorkouts()
+        self.performSegueWithIdentifier("initialMakeSegue", sender: self)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

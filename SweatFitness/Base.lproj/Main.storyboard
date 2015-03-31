@@ -72,7 +72,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="r7n-xc-lOZ">
                             <connections>
                                 <action selector="makeWorkout:" destination="Y41-AY-aRm" id="3qz-dy-Xls"/>
-                                <segue destination="tgu-tY-wzf" kind="modal" id="2cU-j6-Tlj"/>
+                                <segue destination="tgu-tY-wzf" kind="modal" identifier="initialMakeSegue" id="2cU-j6-Tlj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -605,6 +605,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="WrU-rQ-5Ra"/>
+        <segue reference="2cU-j6-Tlj"/>
     </inferredMetricsTieBreakers>
 </document>
