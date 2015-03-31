@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ZNm-Pi-JkZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ZNm-Pi-JkZ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -333,6 +333,23 @@
             </objects>
             <point key="canvasLocation" x="427" y="-383"/>
         </scene>
+        <!--My Workouts-->
+        <scene sceneID="GFb-fr-8jE">
+            <objects>
+                <navigationController id="HIX-Sa-bCv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My Workouts" image="first" id="cik-YZ-xqc"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zgC-89-5ld">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="f7H-0z-VZw" kind="relationship" relationship="rootViewController" id="1CM-36-QJn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5um-i9-3AR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-90" y="213"/>
+        </scene>
         <!--Groups-->
         <scene sceneID="uy1-s1-59Z">
             <objects>
@@ -442,26 +459,6 @@
                                             <outlet property="picView" destination="ua8-cH-yYz" id="jFv-T1-Mu8"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" reuseIdentifier="myWorkoutCell" rowHeight="44" id="sMv-qU-2z5">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sMv-qU-2z5" id="ulH-9H-YMK">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="My workouts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJ0-Hs-fOQ">
-                                                    <rect key="frame" x="8" y="12" width="273" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="bJ0-Hs-fOQ" firstAttribute="leading" secondItem="ulH-9H-YMK" secondAttribute="leadingMargin" id="AdJ-rI-vkE"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="bJ0-Hs-fOQ" secondAttribute="trailing" constant="-2" id="Ked-Gm-qVg"/>
-                                                <constraint firstAttribute="centerY" secondItem="bJ0-Hs-fOQ" secondAttribute="centerY" constant="0.25" id="VSI-uO-PF8"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="y2q-AJ-HJB" id="EUp-dE-27p"/>
@@ -484,9 +481,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="f7H-0z-VZw" kind="push" identifier="myWorkoutSegue" id="7FK-YI-olP"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="clA-Bu-FGM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -514,7 +508,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Pz-yp-9xf" id="g84-u0-R9t">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cc5-Q2-YR4">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cc5-Q2-YR4">
                                                     <rect key="frame" x="8" y="12" width="227" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -564,14 +558,20 @@
                             <constraint firstItem="BEm-r2-a11" firstAttribute="top" secondItem="yWp-n5-jZy" secondAttribute="topMargin" id="UjS-77-fgC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="My Workouts" id="UoR-31-82w"/>
+                    <navigationItem key="navigationItem" title="My Workouts" id="UoR-31-82w">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="5UK-Sx-RK9">
+                            <connections>
+                                <segue destination="tgu-tY-wzf" kind="modal" id="btd-pf-FIt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="requestTable" destination="BEm-r2-a11" id="0El-CM-EGq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Jt-wf-aZY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="881" y="1589"/>
+            <point key="canvasLocation" x="-90" y="912"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -588,6 +588,7 @@
                         <segue destination="Pnq-Xl-wSu" kind="relationship" relationship="viewControllers" id="kbG-jK-9sf"/>
                         <segue destination="q31-J2-CpM" kind="relationship" relationship="viewControllers" id="v5P-x5-t98"/>
                         <segue destination="o0a-op-hjO" kind="relationship" relationship="viewControllers" id="USw-UA-h7k"/>
+                        <segue destination="HIX-Sa-bCv" kind="relationship" relationship="viewControllers" id="p4P-M0-fXE"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -605,6 +606,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="2cU-j6-Tlj"/>
+        <segue reference="btd-pf-FIt"/>
     </inferredMetricsTieBreakers>
 </document>
