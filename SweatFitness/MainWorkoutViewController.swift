@@ -87,6 +87,10 @@ class MainWorkoutViewController: UITableViewController, BaseRequestDelegate {
         return button
     }
     
+    override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "\(self.workouts.workoutDict![self.workouts.gyms![section]]!.count) Workouts"
+    }
+    
     func headerTapped(sender: AnyObject) -> Void {
         if self.workouts.sectionHidden![sender.tag] {
             self.workouts.sectionHidden![sender.tag] = false
