@@ -13,6 +13,8 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
     var formModel:MakeWorkoutFormModel?
     var savedWorkoutObj:PFObject?
     var gyms = ["SPAC","Blomquist","Patten"]
+    var primaryWorkoutTypes = ["Weights", "Cardio", "Others"]
+    var secondaryWorkoutTypes = [["Chest", "Back", "Legs"], ["Run", "Bike", "Cardio Class", "Others"], ["Squash", "Swim", "Tennis"]]
     var currentTF:UITextField?
     var tap:UITapGestureRecognizer?
     @IBOutlet weak var inputForm: UITableView!
@@ -167,6 +169,7 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
             reuseCell.fieldname.textColor = UIColor(red: 69/255, green: 185/255, blue: 193/255, alpha: 1.0)
             
             pickerView = UIPickerView()
+            pickerView!.tag = indexPath.section
             (pickerView as UIPickerView).delegate = self
             (pickerView as UIPickerView).dataSource = self
             toolbar = UIToolbar(frame: CGRectMake(0, -40, tableView.superview!.bounds.width, 40))
@@ -179,10 +182,21 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
             reuseCell.inputTF.placeholder = "Select Gym..."
             cell = reuseCell
         case 2:
-            let reuseCell = tableView.dequeueReusableCellWithIdentifier("inputTextFieldCell") as MakeWorkoutInputTextFieldCell
+            let reuseCell = tableView.dequeueReusableCellWithIdentifier("inputPickerFieldCell") as MakeWorkoutInputPickerFieldCell
             reuseCell.fieldname.text = self.formModel!.fieldNames![section][row]
             reuseCell.fieldname.textColor = UIColor(red: 69/255, green: 185/255, blue: 193/255, alpha: 1.0)
-            reuseCell.inputTF.placeholder = "example: #chest"
+            pickerView = UIPickerView()
+            pickerView!.tag = indexPath.section
+            (pickerView as UIPickerView).delegate = self
+            (pickerView as UIPickerView).dataSource = self
+            toolbar = UIToolbar(frame: CGRectMake(0, -40, tableView.superview!.bounds.width, 40))
+            let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "donePickingWorkout")
+            let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelPicking")
+            let flex = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+            toolbar!.setItems([cancelButton, flex, doneButton], animated: true)
+            reuseCell.inputTF.inputView = pickerView
+            reuseCell.inputTF.inputAccessoryView = toolbar
+            reuseCell.inputTF.placeholder = "Select type of workout..."
             cell = reuseCell
         default:
             println("implement new section case")
@@ -195,13 +209,44 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
     // UIPickerViewDelegate, UIPickerViewDatasource methods
     ////////////////////////////////////////////////////////////////////////////////////////////
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return gyms.count
+        if pickerView.tag == 1 {
+            return gyms.count
+        } else {
+            if component == 0 {
+                return primaryWorkoutTypes.count
+            } else {
+                return secondaryWorkoutTypes[pickerView.selectedRowInComponent(0)].count
+            }
+        }
     }
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
+        if pickerView.tag == 1 {
+            return 1
+        } else {
+            return 2
+        }
     }
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return gyms[row]
+        if pickerView.tag == 1 {
+            return gyms[row]
+        } else {
+            if component == 0 {
+                return primaryWorkoutTypes[row]
+            } else {
+                return secondaryWorkoutTypes[pickerView.selectedRowInComponent(0)][row]
+            }
+        }
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView.tag == 1 {
+            return
+        } else {
+            if component == 0 {
+                pickerView.reloadComponent(1)
+                pickerView.selectRow(0, inComponent: 1, animated: false)
+            }
+        }
     }
     
     /////////////////////////////////////////////////////////////////////////
@@ -259,6 +304,15 @@ class MakeWorkoutViewController : UIViewController, UITableViewDelegate, UITable
         currentTF!.text = formModel!.selectedGym
         currentTF!.endEditing(true)
         //currentTF!.resignFirstResponder()
+    }
+    
+    func donePickingWorkout() {
+        let pickerView = currentTF!.inputView as UIPickerView
+        let primary = primaryWorkoutTypes[pickerView.selectedRowInComponent(0)]
+        let secondary = secondaryWorkoutTypes[pickerView.selectedRowInComponent(0)][pickerView.selectedRowInComponent(1)]
+        formModel!.Tags = [primary, secondary]
+        currentTF!.text = "\(primary), \(secondary)"
+        currentTF!.endEditing(true)
     }
     
     /////////////////////////////////////////////////////////////////////////////////////
