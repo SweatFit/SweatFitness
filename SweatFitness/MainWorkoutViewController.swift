@@ -56,6 +56,7 @@ class MainWorkoutViewController: UITableViewController, BaseRequestDelegate {
         let indexPath = self.workoutTable.indexPathForCell(cell as UITableViewCell)
         //let indexPath = self.workoutTable.indexPathForRowAtPoint(point)
         sender.setImage(UIImage(named: "check"), forState: UIControlState.Normal)
+        cell?.userInteractionEnabled = false
         if (indexPath != nil) {
             self.tableView(self.workoutTable, accessoryButtonTappedForRowWithIndexPath: indexPath!)
         }
@@ -86,6 +87,10 @@ class MainWorkoutViewController: UITableViewController, BaseRequestDelegate {
         button.tag = section
         button.addTarget(self, action: Selector("headerTapped:"), forControlEvents: UIControlEvents.TouchUpInside)
         return button
+    }
+    
+    override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "\(self.workouts.workoutDict![self.workouts.gyms![section]]!.count) Workouts"
     }
     
     func headerTapped(sender: AnyObject) -> Void {

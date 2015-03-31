@@ -33,14 +33,26 @@ class LoginViewController: PFLogInViewController, PFLogInViewControllerDelegate,
             | PFSignUpFields.DismissButton)
         println(self.signUpController)
         
+        
+        
         self.signUpController.delegate = self
         //self.logInView.logo.frame = CGRectMake(20, 20, 120, 120)
     
     }
     
     func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) -> Void {
-        println("in signup success")
-        self.dismissViewControllerAnimated(true, completion: nil)
+        var fullName:String = user["additional"] as String
+        var names = fullName.componentsSeparatedByString(" ")
+        user["firstName"] = names[0]
+        user["lastName"] = names[1]
+        user.saveInBackgroundWithBlock {
+            (success: Bool, Error: NSError!) -> Void in
+            if(success) {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                println("Failed to create user")
+            }
+        }
     }
     
     func signUpViewController(signUpController: PFSignUpViewController!, shouldBeginSignUp info: [NSObject : AnyObject]!) -> Bool {
