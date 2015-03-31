@@ -9,7 +9,7 @@
 import Foundation
 import Parse
 
-class WorkoutSuggestionCollection:NSObject {
+class GeneralWorkoutCollection:NSObject {
     var workouts:[Workout]?
     override init () {
         workouts = [Workout]()
@@ -24,6 +24,30 @@ class WorkoutSuggestionCollection:NSObject {
             let workout = Workout(creator: creator, workoutID: workoutID, startTime: startTime, endTime: endTime, location: location)
             workouts!.append(workout)
         }
+    }
+    func findWorkout(accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) -> Workout {
+        let wo = workouts![indexPath.row]
+        return wo
+    }
+    func findWorkoutCreator(accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) -> PFUser {
+        let wo = self.findWorkout(accessoryButtonTappedForRowWithIndexPath: indexPath)
+        return wo.creator
+    }
+    func findWorkoutID(accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) -> String {
+        let wo = self.findWorkout(accessoryButtonTappedForRowWithIndexPath: indexPath)
+        return wo.workoutID! as String
+    }
+    func findWorkoutStartTime(accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) -> NSDate {
+        let wo = self.findWorkout(accessoryButtonTappedForRowWithIndexPath: indexPath)
+        return wo.startTime!
+    }
+    func findWorkoutEndTime(accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) -> NSDate {
+        let wo = self.findWorkout(accessoryButtonTappedForRowWithIndexPath: indexPath)
+        return wo.startTime!
+    }
+    func findWorkoutLocation(accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) -> String {
+        let wo = self.findWorkout(accessoryButtonTappedForRowWithIndexPath: indexPath)
+        return wo.location!
     }
 }
 

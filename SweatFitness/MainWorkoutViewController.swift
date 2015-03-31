@@ -64,7 +64,7 @@ class MainWorkoutViewController: UITableViewController, BaseRequestDelegate {
         let me = PFUser.currentUser()
         let creator = workouts.findWorkoutCreator(accessoryButtonTappedForRowWithIndexPath: indexPath)
         let workoutID = workouts.findWorkoutID(accessoryButtonTappedForRowWithIndexPath: indexPath)
-        let request = WorkoutRequest(sourceID: me.objectId, destID: creator.objectId, targetWorkoutID: workoutID)
+        let request = WorkoutRequest(sourceID: me.objectId, destID: creator.objectId, targetWorkoutID: workoutID, senderName: me["additional"] as String)
         request.delegate = self
         request.makeRequest()
         println("request workout")

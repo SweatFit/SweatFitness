@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="pp8-La-7aT">
-                                <rect key="frame" x="0.0" y="28" width="320" height="540"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="pp8-La-7aT">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="workoutCells" rowHeight="69" id="e0B-9z-6Qo" customClass="WorkoutViewCell" customModule="SweatFitness" customModuleProvider="target">
@@ -46,6 +46,9 @@
                                                     <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="request:" destination="BMr-Kv-QkR" eventType="touchUpInside" id="A21-FK-juN"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -73,6 +76,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pp8-La-7aT" firstAttribute="top" secondItem="L8L-YE-MOe" secondAttribute="bottom" constant="-20" id="bPe-uw-u4w"/>
+                            <constraint firstItem="pp8-La-7aT" firstAttribute="leading" secondItem="eX7-rR-KcL" secondAttribute="leadingMargin" constant="-16" id="hBP-J5-B6t"/>
+                            <constraint firstItem="mLc-lE-kkr" firstAttribute="top" secondItem="pp8-La-7aT" secondAttribute="bottom" id="k5U-Ob-YN1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pp8-La-7aT" secondAttribute="trailing" constant="-16" id="klQ-is-jxx"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="suggestionTable" destination="pp8-La-7aT" id="JSO-fF-502"/>

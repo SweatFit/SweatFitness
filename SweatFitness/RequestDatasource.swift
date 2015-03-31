@@ -18,11 +18,13 @@ import Parse
 class BaseRequest {
     var sourceID:String?
     var destID:String?
+    var senderName:String?
     var delegate:BaseRequestDelegate?
     
-    init(sourceID: String, destID: String) {
+    init(sourceID: String, destID: String, senderName: String) {
         self.sourceID = sourceID
         self.destID = destID
+        self.senderName = senderName
     }
 }
 
@@ -38,8 +40,8 @@ class WorkoutRequest : BaseRequest {
     var targetWorkoutID:String?
     var requestObj = PFObject(className: "WorkoutRequestObject")
     
-    init(sourceID: String, destID: String, targetWorkoutID: String) {
-        super.init(sourceID: sourceID, destID: destID)
+    init(sourceID: String, destID: String, targetWorkoutID: String, senderName: String) {
+        super.init(sourceID: sourceID, destID: destID, senderName: senderName)
         self.targetWorkoutID = targetWorkoutID
     }
     
@@ -47,6 +49,7 @@ class WorkoutRequest : BaseRequest {
         var saved:Bool?
         self.requestObj["senderID"] = self.sourceID
         self.requestObj["receiverID"] = self.destID
+        self.requestObj["senderName"] = self.senderName
         self.requestObj["targetWorkoutID"] = self.targetWorkoutID
         requestObj.saveInBackgroundWithBlock {
             (success: Bool, Error: NSError!) -> Void in

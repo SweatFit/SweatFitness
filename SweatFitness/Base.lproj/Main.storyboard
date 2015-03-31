@@ -442,7 +442,7 @@
                                             <outlet property="picView" destination="ua8-cH-yYz" id="jFv-T1-Mu8"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" reuseIdentifier="myWorkoutCell" rowHeight="44" id="sMv-qU-2z5" customClass="MyWorkoutCell" customModule="SweatFitness" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" reuseIdentifier="myWorkoutCell" rowHeight="44" id="sMv-qU-2z5">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sMv-qU-2z5" id="ulH-9H-YMK">

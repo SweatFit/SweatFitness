@@ -9,9 +9,9 @@
 import UIKit
 import Parse
 
-class SuggestionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SuggestionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, BaseRequestDelegate {
     var createdWorkout:PFObject?
-    var suggestions = WorkoutSuggestionCollection()
+    var suggestions = GeneralWorkoutCollection()
     @IBOutlet weak var suggestionTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +41,7 @@ class SuggestionsViewController: UIViewController, UITableViewDelegate, UITableV
                 if let objs = objects as? [PFObject] {
                     println(objs)
                     self.suggestions.populateWorkoutWithObjects(objs)
+                    self.suggestionTable.reloadData()
                 }
             } else {
                 println(error)
@@ -58,17 +59,52 @@ class SuggestionsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        if suggestions.workouts != nil {
+            return suggestions.workouts!.count
+        } else {
+            return 0
+        }
+    }
+    
+    @IBAction func request(sender: UIButton) {
+        let button = sender as UIControl
+        let contentView = sender.superview
+        let cell = contentView!.superview
+        let indexPath = self.suggestionTable.indexPathForCell(cell as UITableViewCell)
+        //let indexPath = self.workoutTable.indexPathForRowAtPoint(point)
+        sender.setImage(UIImage(named: "check"), forState: UIControlState.Normal)
+        if (indexPath != nil) {
+            self.tableView(self.suggestionTable, accessoryButtonTappedForRowWithIndexPath: indexPath!)
+        }
+    }
+    
+    func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+        let me = PFUser.currentUser()
+        let creator = suggestions.findWorkoutCreator(accessoryButtonTappedForRowWithIndexPath: indexPath)
+        let workoutID = suggestions.findWorkoutID(accessoryButtonTappedForRowWithIndexPath: indexPath)
+        let request = WorkoutRequest(sourceID: me.objectId, destID: creator.objectId, targetWorkoutID: workoutID, senderName: me["additional"] as String)
+        request.delegate = self
+        request.makeRequest()
+        println("request workout")
+    }
+    
+    func saveRequestSuccess(success: Bool) {
+        println("success")
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("workoutCells") as WorkoutViewCell
-        let workouts = suggestions.workouts!
-        let wo = workouts[indexPath.row]
+        let wo = suggestions.workouts![indexPath.row]
         let firstName = wo.creator["firstName"] as String
         let lastName = wo.creator["lastName"] as String
         cell.nameLabel.text = "\(firstName) \(lastName)"
-        //cell.timeLabel
+        let sTime  = NSDateFormatter.localizedStringFromDate(wo.startTime!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        let eTime  = NSDateFormatter.localizedStringFromDate(wo.endTime!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        cell.timeLabel.text = "\(sTime) - \(eTime)"
         return cell
     }
     

@@ -10,7 +10,7 @@ import UIKit
 import Parse
 
 class MyWorkoutViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
-    var userWorkouts:[PFObject]?
+    var userWorkouts = GeneralWorkoutCollection()
     var userRequests:[[PFObject]]?
     
     @IBOutlet weak var requestTable: UITableView!
@@ -24,18 +24,24 @@ class MyWorkoutViewController: UIViewController,UITableViewDelegate, UITableView
         woquery.findObjectsInBackgroundWithBlock { (objects:[AnyObject]!, error:NSError!) -> Void in
             if objects != nil {
                 if let objs = objects as? [PFObject] {
-                    self.userWorkouts = objs
-                    for obj in objs {
-                        let objid = obj.objectId
-                        let requery = PFQuery(className: "WorkoutRequestObject")
-                        requery.whereKey("targetWorkoutID", equalTo:objid)
-                        let requests = requery.findObjects()
-                        if let reqs = requests as? [PFObject] {
-                            self.userRequests!.append(reqs)
+                    self.userWorkouts.populateWorkoutWithObjects(objs)
+                    let requery = PFQuery(className: "WorkoutRequestObject")
+                    requery.whereKey("receiverID", equalTo: PFUser.currentUser().objectId)
+                    requery.findObjectsInBackgroundWithBlock({ (reqobjects:[AnyObject]!, error:NSError!) -> Void in
+                        if reqobjects != nil {
+                            if let reqobjs = reqobjects as? [PFObject] {
+                                for obj in self.userWorkouts.workouts! {
+                                    let objid  = obj.workoutID
+                                    let filteredarr = filter(reqobjs, {$0["targetWorkoutID"] as? String == objid})
+                                    self.userRequests!.append(filteredarr)
+                                }
+                                self.requestTable.reloadData()
+                            }
+                        } else {
+                            println(error)
                         }
-                    }
+                    })
                 }
-                self.requestTable.reloadData()
             } else {
                 println(error)
             }
@@ -56,6 +62,29 @@ class MyWorkoutViewController: UIViewController,UITableViewDelegate, UITableView
         return cell
     }
     
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let workoutForIndexPath = self.userWorkouts.workouts![section]
+        let width = self.view.bounds.width
+        let hdrview = UIView(frame: CGRectMake(0, 0, width, 60))
+        let locLabel = UILabel(frame: CGRectMake(5, 5, width/2, 15))
+        let timeLabel = UILabel(frame: CGRectMake(10, 30, width, 15))
+        locLabel.text = "At \(workoutForIndexPath.location!)"
+        locLabel.textColor = UIColor(red: 229/255, green: 86/255, blue: 58/255, alpha: 1.0)
+        let sTime  = NSDateFormatter.localizedStringFromDate(workoutForIndexPath.startTime!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        let eTime  = NSDateFormatter.localizedStringFromDate(workoutForIndexPath.endTime!, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        let date = NSDateFormatter.localizedStringFromDate(workoutForIndexPath.startTime!, dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: NSDateFormatterStyle.NoStyle)
+        timeLabel.text = "from \(sTime) to \(eTime) on \(date)"
+        timeLabel.textColor = UIColor(white: 0.5, alpha: 1.0)
+        timeLabel.font = UIFont(name: "System", size: 10)
+        hdrview.addSubview(locLabel)
+        hdrview.addSubview(timeLabel)
+        return hdrview
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if userRequests != nil {
             return userRequests![section].count
@@ -65,8 +94,8 @@ class MyWorkoutViewController: UIViewController,UITableViewDelegate, UITableView
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if userWorkouts != nil {
-            return userWorkouts!.count
+        if userWorkouts.workouts != nil {
+            return userWorkouts.workouts!.count
         } else {
             return 0
         }
